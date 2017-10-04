@@ -5,19 +5,14 @@
   </h1>
   <nav>
     <ul>
-      <li><a href="pierwszy">pierwszy link</a></li>
+      <li><a routerLink="corporation-list">pierwszy link</a></li>
       <li><a href="drugi">pierwszy link</a></li>
     </ul>
   </nav>
 
-  <ul>
-    <li *ngFor="let corpo of corporations">
-      {{corpo.id}} = {{corpo.name}} = {{corpo.city}} = {{corpo.country}}
-    </li>
-  </ul>
+  <router-outlet></router-outlet>
 
-
-  <corporation-list></corporation-list>
+<!--   <corporation-list></corporation-list> -->
 </div>
 
 
