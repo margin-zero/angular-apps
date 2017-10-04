@@ -1,12 +1,22 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<section class="corporation-list">
+  <table>
 
-  <ul>
-    <li *ngFor="let corpo of corporations">
-      {{corpo.id}} = {{corpo.name}} = {{corpo.city}} = {{corpo.country}}
-    </li>
-  </ul>
+    <tr>
+      <th>id</th>
+      <th>nazwa</th>
+      <th>miasto</th>
+      <th>kraj</th>
+    </tr>
+
+    <tr *ngFor="let corporation of corporations">
+      <td>{{corporation.id}}</td>
+      <td>{{corporation.name}}</td>
+      <td>{{corporation.city}}</td>
+      <td>{{corporation.country}}</td>
+    </tr>
   
-</div>
+  </table>
+</section>
 
 
