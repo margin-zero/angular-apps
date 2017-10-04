@@ -16,6 +16,7 @@ const CORPORATIONS : Corporation[] = [
 
 export class CorporationService {
 
+
     getCorporations(): Promise<Corporation[]> {
         return Promise.resolve(CORPORATIONS);
     }
