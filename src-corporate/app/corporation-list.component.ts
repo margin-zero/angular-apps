@@ -14,6 +14,7 @@ import { CorporationService } from './corporation.service';
 export class CorporationListComponent implements OnInit {
 
   corporations: Corporation[];
+  selectedCorporation: Corporation;
 
   constructor(private corporationService: CorporationService) { }
 
@@ -23,5 +24,10 @@ export class CorporationListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCorporations();
+  }
+
+  onSelect( corporation: Corporation ){
+    this.selectedCorporation = corporation;
+    alert(this.selectedCorporation.name);
   }
 }

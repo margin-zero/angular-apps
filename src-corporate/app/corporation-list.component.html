@@ -9,7 +9,7 @@
       <th>kraj</th>
     </tr>
 
-    <tr *ngFor="let corporation of corporations">
+    <tr *ngFor="let corporation of corporations" (click)="onSelect(corporation)">
       <td>{{corporation.id}}</td>
       <td>{{corporation.name}}</td>
       <td>{{corporation.city}}</td>
