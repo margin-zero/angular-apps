@@ -16,8 +16,12 @@ const CORPORATIONS : Corporation[] = [
 
 export class CorporationService {
 
-
     getCorporations(): Promise<Corporation[]> {
         return Promise.resolve(CORPORATIONS);
+    }
+
+    getCorporation( id: number ): Promise<Corporation> {
+        return this.getCorporations()
+        .then(corporations => corporations.find(corporation => corporation.id === id));
     }
 }

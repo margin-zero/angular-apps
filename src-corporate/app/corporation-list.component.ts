@@ -4,6 +4,7 @@ import { Corporation } from './corporation';
 
 import { CorporationService } from './corporation.service';
 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'corporation-list',
@@ -16,7 +17,9 @@ export class CorporationListComponent implements OnInit {
   corporations: Corporation[];
   selectedCorporation: Corporation;
 
-  constructor(private corporationService: CorporationService) { }
+  constructor(
+    private corporationService: CorporationService,
+    private router: Router) { }
 
   getCorporations(): void {
     this.corporationService.getCorporations().then(corporations => this.corporations = corporations);
@@ -28,6 +31,7 @@ export class CorporationListComponent implements OnInit {
 
   onSelect( corporation: Corporation ){
     this.selectedCorporation = corporation;
-    alert(this.selectedCorporation.name);
+    //alert(this.selectedCorporation.name);
+    this.router.navigate(['./corporation-edit/'+this.selectedCorporation.id])
   }
 }

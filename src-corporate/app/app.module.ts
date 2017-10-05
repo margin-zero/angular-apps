@@ -4,6 +4,7 @@ import { RouterModule }   from '@angular/router';
 
 import { AppComponent }  from './app.component';
 import { CorporationListComponent }   from './corporation-list.component';
+import { CorporationEditComponent }   from './corporation-edit.component';
 import { CityListComponent }      from './city-list.component';
 
 import { CorporationService } from './corporation.service';
@@ -22,6 +23,7 @@ import { AppRoutingModule }     from './app-routing.module';
   declarations: [ 
     AppComponent,
     CorporationListComponent,
+    CorporationEditComponent,
     CityListComponent
    ],
 
