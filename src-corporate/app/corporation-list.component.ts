@@ -31,7 +31,6 @@ export class CorporationListComponent implements OnInit {
 
   onSelect( corporation: Corporation ){
     this.selectedCorporation = corporation;
-    //alert(this.selectedCorporation.name);
     this.router.navigate(['./corporation-edit/'+this.selectedCorporation.id])
   }
 }

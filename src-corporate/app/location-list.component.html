@@ -1,0 +1,23 @@
+<section class="location-list">
+
+    <table>
+        <tr>
+            <th>miasto</th>
+            <th>kraj</th>
+        </tr>
+      
+        <tr *ngFor="let city of cities" (click)="onSelect(corporation)">
+            <td>{{city.name}}</td>
+            
+            <td>
+            {{
+                countries.find( function(country) {
+                    return country.id == city.country_id})
+            }}
+            </td>
+
+        </tr>
+
+    </table>
+
+</section>
