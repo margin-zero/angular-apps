@@ -2,22 +2,18 @@
 
     <table>
         <tr>
-            <th>miasto</th>
             <th>kraj</th>
+            <th>miasto</th>
         </tr>
-      
-        <tr *ngFor="let city of cities" (click)="onSelect(corporation)">
-            <td>{{city.name}}</td>
-            
+        
+        <tr *ngFor="let country of countries">
+            <td>{{country.name}}</td>
             <td>
-            {{
-                countries.find( function(country) {
-                    return country.id == city.country_id})
-            }}
+                <ng-template ngFor let-city [ngForOf]="cities">
+                    <p *ngIf="city.country_id == country.id">{{city.name}}</p>
+                </ng-template>
             </td>
-
         </tr>
-
     </table>
 
 </section>

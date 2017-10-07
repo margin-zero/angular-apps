@@ -8,7 +8,8 @@ const COUNTRIES : Country[] = [
     { id: 2, name: 'Belgia' },
     { id: 3, name: 'Chorwacja' },
     { id: 4, name: 'Dania' },
-    { id: 5, name: 'Estonia' }
+    { id: 5, name: 'Estonia' },
+    { id: 6, name: 'Polska'}
   ];
 
 

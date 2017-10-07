@@ -1,0 +1,63 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+}
+
+
+table {
+    //width: 100%;
+    border-collapse: collapse;
+
+    td, th {
+        padding: 10px;
+        line-height: 26px;
+    }
+
+    td { 
+        vertical-align: top;
+    }
+
+    tr:nth-child(odd) {
+        background-color: #f0f0f0;
+    }
+
+    tr:nth-child(even) {
+        background-color: #e8e8e8;
+    }
+
+    tr:first-child {
+        background-color: #e0e0e0;
+    }
+
+    tr:hover:not(:first-child) {
+        background-color: #d0d0d0;
+    }
+
+    span, p {
+        margin: 0;
+        padding: 0;
+    }
+
+    p {
+        line-height: 26px;
+    }
+  
+}
+
+table, th, td {
+    border: none;
+}
+
+corporation-list {
+    tr:hover {
+        cursor: pointer;
+    }
+}
+
+location-list {
+
+    p:hover { 
+        background: rgba(0,0,0,0.1);
+        cursor: pointer;
+    }
+}
