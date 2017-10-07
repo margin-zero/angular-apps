@@ -12,8 +12,8 @@
     <tr *ngFor="let corporation of corporations" (click)="onSelect(corporation)">
       <td>{{corporation.id}}</td>
       <td>{{corporation.name}}</td>
-      <td>{{corporation.city}}</td>
-      <td>{{corporation.country}}</td>
+      <td>{{cities.find(getCityName(corporation.city)).name}}</td>
+      <td>{{countries.find(getCountryName(corporation.country)).name}}</td>
     </tr>
   
   </table>
