@@ -29,10 +29,6 @@ table {
         background-color: #e0e0e0;
     }
 
-    tr:hover:not(:first-child) {
-        background-color: #d0d0d0;
-    }
-
     span, p {
         margin: 0;
         padding: 0;
@@ -52,6 +48,10 @@ corporation-list {
     tr:hover {
         cursor: pointer;
     }
+
+    tr:hover:not(:first-child) {
+        background-color: #d0d0d0;
+    }
 }
 
 location-list {
@@ -60,4 +60,19 @@ location-list {
         background: rgba(0,0,0,0.1);
         cursor: pointer;
     }
+}
+
+
+span.delete {
+    margin: 0;
+    padding: 0;
+    background: red;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 12px;
+    width: 20px; height: 20px;
+    display: inline-block;
+    text-align: center;
+    line-height: 20px;
+    border-radius: 50%; 
 }

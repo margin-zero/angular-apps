@@ -7,12 +7,20 @@
         </tr>
         
         <tr *ngFor="let country of countries">
-            <td>{{country.name}}</td>
+            <td>
+                <p>{{country.name}} <span *ngIf="countryHasCities(country.id)==false" class="delete">x</span></p>
+            </td>
             <td>
                 <ng-template ngFor let-city [ngForOf]="cities">
-                    <p *ngIf="city.country_id == country.id">{{city.name}}</p>
+                    <p *ngIf="city.country_id == country.id">{{city.name}} <span *ngIf="cityHasCorporations(city.id)==false" class="delete">x</span></p>
                 </ng-template>
+                <p><a href="">dodaj miasto</a></p>
             </td>
+        </tr>
+
+        <tr>
+            <td><p><a href="">dodaj państwo</a></p></td>
+            <td>&nbsp;</td>
         </tr>
     </table>
 
