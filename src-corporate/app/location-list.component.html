@@ -8,20 +8,26 @@
         
         <tr *ngFor="let country of countries">
             <td>
-                <p>{{country.name}} <span *ngIf="countryHasCities(country.id)==false" class="delete">x</span></p>
+                <a href="" class="location">{{country.name}}</a> <button class="delete" *ngIf="countryHasCities(country.id)==false" class="delete">x</button>
             </td>
             <td>
-                <ng-template ngFor let-city [ngForOf]="cities">
-                    <p *ngIf="city.country_id == country.id">{{city.name}} <span *ngIf="cityHasCorporations(city.id)==false" class="delete">x</span></p>
-                </ng-template>
-                <p><a href="">dodaj miasto</a></p>
+                <ul class="location-list">
+                    <ng-template ngFor let-city [ngForOf]="cities">
+                        <li *ngIf="city.country_id == country.id">
+                            <a href="" class="location">{{city.name}}</a> <button class="delete" *ngIf="cityHasCorporations(city.id)==false" class="delete">x</button>
+                        </li>
+                    </ng-template>
+                    <li><a href="" class="small">[ dodaj miasto ]</a></li>
+                </ul>
             </td>
         </tr>
 
         <tr>
-            <td><p><a href="">dodaj państwo</a></p></td>
-            <td>&nbsp;</td>
+            <td><p><a href="" class="small">[ dodaj państwo ]</a></p></td>
+            <td></td>
         </tr>
     </table>
+
+
 
 </section>

@@ -1,1 +1,1 @@
-nav.main{background-color:#e8e8e8}nav.main ul{list-style:none;padding:0}nav.main ul li{display:inline}nav.main ul li a{display:inline-block;padding:10px;font-size:1rem;text-decoration:none}nav.main ul li a,nav.main ul li a:active,nav.main ul li a:hover,nav.main ul li a:link,nav.main ul li a:visited{color:#04f}
+nav.main{background-color:#e8e8e8}nav.main ul{list-style:none;padding:10px}nav.main ul li{display:inline}nav.main ul li:not(:last-child){margin-right:10px}

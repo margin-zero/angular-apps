@@ -3,7 +3,43 @@
     text-align: left;
 }
 
+a {
+    display: inline-block;
+    line-height: 26px;
+    font-size: 1rem;
+    text-decoration: none;
+}
 
+a, a:link, a:visited, a:hover, a:active {
+    color: #0044ff;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a.small {
+    font-size: 0.8rem;
+}
+
+
+button {
+    &.delete {
+        border-radius: 4px;
+        float: right;
+        margin-left: 20px;
+        border: 1px solid rgba(0,0,0,0.2);
+        cursor: pointer;
+        padding: 1px 6px;
+        vertical-align: middle;
+        color: rgba(0,0,0,0.8)
+    }
+    &:hover {
+        color:#ffffff;
+        background: red;
+        border: 1px solid darkred;
+    }
+}
 table {
     //width: 100%;
     border-collapse: collapse;
@@ -55,10 +91,22 @@ corporation-list {
 }
 
 location-list {
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    
+    li {
+       
+    }
 
-    p:hover { 
-        background: rgba(0,0,0,0.1);
-        cursor: pointer;
+    }
+    a.location, a.location:link, a.location:visited, a.location:hover, a.location:active {
+        color: rgba(0,0,0,1);
+    }
+    
+    a.location:hover {
+        text-decoration: underline;
     }
 }
 
