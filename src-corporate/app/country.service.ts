@@ -1,25 +1,31 @@
-import { Injectable } from '@angular/core';
+import { Injectable }    from '@angular/core';
+import { Headers, Http } from '@angular/http';
+
+import 'rxjs/add/operator/toPromise';
 
 import { Country } from './country';
 
-
-const COUNTRIES : Country[] = [
-    { id: 1, name: 'Albania' },
-    { id: 2, name: 'Belgia' },
-    { id: 3, name: 'Chorwacja' },
-    { id: 4, name: 'Dania' },
-    { id: 5, name: 'Estonia' },
-    { id: 6, name: 'Polska'},
-    { id: 7, name: "Rosja" }
-  ];
 
 
 @Injectable()
 
 export class CountryService {
 
+    private headers = new Headers({'Content-Type': 'application/json'});
+    private countriesUrl = 'api/countries'; // url to web api
+
+    constructor (private http: Http) {}
 
     getCountries(): Promise<Country[]> {
-        return Promise.resolve(COUNTRIES);
-    }
+           return this.http.get(this.countriesUrl)
+           .toPromise()
+           .then(response => response.json().data as Country[])
+           .catch(this.handleError);           
+        }
+
+
+    private handleError(error: any): Promise<any> {
+        console.error('UWAGA !!! An error occurred', error); // for demo purposes only
+        return Promise.reject(error.message || error);
+      }
 }

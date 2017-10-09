@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Corporation } from './corporation';
 import { City } from './city';
@@ -8,7 +9,6 @@ import { CorporationService } from './corporation.service';
 import { CityService } from './city.service';
 import { CountryService } from './country.service';
 
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'corporation-list',
@@ -29,6 +29,13 @@ export class CorporationListComponent implements OnInit {
     private countryService: CountryService,
     private router: Router) { }
 
+
+  ngOnInit(): void {
+    this.getCountries();
+    this.getCorporations();
+    this.getCities();
+  }
+
   getCorporations(): void {
     this.corporationService.getCorporations().then(corporations => this.corporations = corporations);
   }
@@ -38,18 +45,15 @@ export class CorporationListComponent implements OnInit {
   }
 
   getCountries(): void {
-    this.countryService.getCountries().then(countries => this.countries = countries);
-  }
+    this.countryService
+    .getCountries()
+    .then(cntr => this.countries = cntr);
+}
 
-  ngOnInit(): void {
-    this.getCorporations();
-    this.getCities();
-    this.getCountries();
-  }
 
   onSelect( corporation: Corporation ){
     this.selectedCorporation = corporation;
-    this.router.navigate(['./corporation-edit/'+this.selectedCorporation.id])
+    this.router.navigate(['./corporation-edit/'+this.selectedCorporation.id]);
   }
 
   getCityName(city_id) {
