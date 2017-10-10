@@ -37,17 +37,21 @@ export class CorporationListComponent implements OnInit {
   }
 
   getCorporations(): void {
-    this.corporationService.getCorporations().then(corporations => this.corporations = corporations);
+    this.corporationService
+    .getCorporations()
+    .then(corporations => this.corporations = corporations);
   }
 
   getCities(): void {
-    this.cityService.getCities().then(cities => this.cities = cities);
+    this.cityService
+    .getCities()
+    .then(cities => this.cities = cities);
   }
 
   getCountries(): void {
     this.countryService
     .getCountries()
-    .then(cntr => this.countries = cntr);
+    .then(countries => this.countries = countries);
 }
 
 

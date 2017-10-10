@@ -17,11 +17,13 @@ export class CountryService {
     constructor (private http: Http) {}
 
     getCountries(): Promise<Country[]> {
+ 
            return this.http.get(this.countriesUrl)
            .toPromise()
-           .then(response => response.json().data as Country[])
-           .catch(this.handleError);           
-        }
+           .then(response => response.json() as Country[])
+           .catch(this.handleError);     
+
+    }
 
 
     private handleError(error: any): Promise<any> {
