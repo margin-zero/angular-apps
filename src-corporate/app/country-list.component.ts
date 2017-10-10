@@ -13,7 +13,7 @@ import { CountryService } from './country.service';
 
 export class CountryListComponent implements OnInit {
 
-  private countries: Country[];
+  countries: Country[];
 
   constructor(private countryService: CountryService) { }
 
