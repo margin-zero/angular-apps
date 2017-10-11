@@ -11,6 +11,7 @@ import { CorporationListComponent }   from './corporation-list.component';
 import { CorporationEditComponent }   from './corporation-edit.component';
 import { CityListComponent }          from './city-list.component';
 import { CountryListComponent }       from './country-list.component';
+import { CountryAddComponent }        from './country-add.component';
 import { LocationListComponent }      from './location-list.component';
 
 import { CorporationService }   from './corporation.service';
@@ -35,6 +36,7 @@ import { AppRoutingModule }     from './app-routing.module';
     CorporationEditComponent,
     CityListComponent,
     CountryListComponent,
+    CountryAddComponent,
     LocationListComponent
 
    ],
