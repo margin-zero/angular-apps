@@ -13,7 +13,7 @@ import { CityListComponent }          from './city-list.component';
 import { CountryListComponent }       from './country-list.component';
 import { LocationListComponent }      from './location-list.component';
 
-import { CorporationService }   from './corporation.service'; 
+import { CorporationService }   from './corporation.service';
 import { CityService }          from './city.service';
 import { CountryService }       from './country.service';
 
@@ -21,15 +21,15 @@ import { CountryService }       from './country.service';
 import { AppRoutingModule }     from './app-routing.module';
 
 @NgModule({
-  
-  imports:      [ 
+
+  imports:      [
     BrowserModule,
     HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
     AppRoutingModule
   ],
 
-  declarations: [ 
+  declarations: [
     AppComponent,
     CorporationListComponent,
     CorporationEditComponent,
@@ -40,7 +40,7 @@ import { AppRoutingModule }     from './app-routing.module';
    ],
 
   bootstrap: [ AppComponent ],
-  
+
   providers: [ CorporationService, CityService, CountryService ],
 })
 export class AppModule { }

@@ -8,13 +8,13 @@
         
         <tr *ngFor="let country of countries">
             <td>
-                <a href="" class="location">{{country.name}}</a> <button class="delete" *ngIf="countryHasCities(country.id)==false" class="delete">x</button>
+                <a href="" class="location">{{country.name}}</a> <button class="delete" *ngIf="countryHasCities(country.id)==false" (click)="deleteCountry(country); $event.stopPropagation()">x</button>
             </td>
             <td>
                 <ul class="location-list">
                     <ng-template ngFor let-city [ngForOf]="cities">
                         <li *ngIf="city.country_id == country.id">
-                            <a href="" class="location">{{city.name}}</a> <button class="delete" *ngIf="cityHasCorporations(city.id)==false" class="delete">x</button>
+                            <a href="" class="location">{{city.name}}</a> <button class="delete" *ngIf="cityHasCorporations(city.id)==false" (click)="deleteCity(city); $event.stopPropagation()">x</button>
                         </li>
                     </ng-template>
                     <li><a href="" class="small">[ dodaj miasto ]</a></li>
