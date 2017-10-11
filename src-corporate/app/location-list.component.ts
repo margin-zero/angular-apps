@@ -16,13 +16,13 @@ import { CorporationService } from './corporation.service';
 
 export class LocationListComponent implements OnInit {
 
-  cities: City[] = [
-    { id: 0, name: 'Noname', country_id: 0}
-  ];
+  // array element added to avoid runtime error during cityHasCorporations() and countryHasCities()
+  cities: City[] = [{ id: 0, name: 'Noname', country_id: 0}];
+
   countries: Country[];
-  corporations: Corporation[] = [
-    { id: 0, name: 'Noname', city: 0, country: 0 } //  added to avoid runtime error during cityHasCorporations() and countryHasCities()
-  ];
+
+  // array element added to avoid runtime error during cityHasCorporations() and countryHasCities()
+  corporations: Corporation[] = [ { id: 0, name: 'Noname', city: 0, country: 0 }];
 
   constructor(
       private cityService: CityService,
