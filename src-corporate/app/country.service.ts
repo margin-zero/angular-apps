@@ -37,4 +37,12 @@ export class CountryService {
           .then(() => null)
           .catch(this.handleError);
     }
+
+    create(countryName: string): Promise<Country> {
+        return this.http
+        .post(this.countriesUrl, JSON.stringify({name: countryName}), {headers: this.headers})
+        .toPromise()
+        .then(res => res.json() as Country)
+        .catch(this.handleError);
+    }
 }

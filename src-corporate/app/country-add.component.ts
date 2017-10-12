@@ -24,5 +24,12 @@ export class CountryAddComponent {
     goBack() {
       this.location.back();
     }
+
+    add (countryName: string): void {
+      countryName = countryName.trim();
+      if (!countryName) { this.location.back(); return; }
+      this.countryService.create(countryName);
+      this.location.back();
+    }
 }
 

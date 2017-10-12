@@ -1,2 +1,7 @@
-country add component<br />
-<button (click)="goBack()">powrót</button>
+<div>
+    <h4>Dodaj państwo</h4>
+    <label>Nazwa:</label> <input #countryName />
+    <button (click)="add(countryName.value); countryName.value=''">
+      Dodaj
+    </button>
+</div>
