@@ -16,13 +16,9 @@ import { CorporationService } from './corporation.service';
 
 export class LocationListComponent implements OnInit {
 
-  // array element added to avoid runtime error during cityHasCorporations() and countryHasCities()
-  cities: City[] = [{ id: 0, name: 'Noname', country_id: 0}];
-
+  cities: City[];
   countries: Country[];
-
-  // array element added to avoid runtime error during cityHasCorporations() and countryHasCities()
-  corporations: Corporation[] = [ { id: 0, name: 'Noname', city: 0, country: 0 }];
+  corporations: Corporation[];
 
   constructor(
       private cityService: CityService,
@@ -43,9 +39,9 @@ export class LocationListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getCorporations();
     this.getCities();
     this.getCountries();
-    this.getCorporations();
   }
 
   findElement(arr, propName, propValue) {

@@ -25,6 +25,15 @@ export class CountryService {
 
     }
 
+    getCountry(id: number): Promise<Country> {
+        const url = `${this.countriesUrl}/${id}`;
+        return this.http.get(url)
+          .toPromise()
+          .then(response => response.json() as Country)
+          .catch(this.handleError);
+    }
+
+
     private handleError(error: any): Promise<any> {
         console.error('UWAGA !!! An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);

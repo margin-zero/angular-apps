@@ -17,7 +17,7 @@
                             <a href="" class="location">{{city.name}}</a> <button class="delete" *ngIf="cityHasCorporations(city.id)==false" (click)="deleteCity(city); $event.stopPropagation()">x</button>
                         </li>
                     </ng-template>
-                    <li><a href="" class="small">[ dodaj miasto ]</a></li>
+                    <li><a routerLink="../city-add/{{country.id}}" class="small">[ dodaj miasto ]</a></li>
                 </ul>
             </td>
         </tr>

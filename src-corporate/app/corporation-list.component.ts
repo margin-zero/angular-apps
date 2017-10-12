@@ -32,8 +32,8 @@ export class CorporationListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCountries();
-    this.getCorporations();
     this.getCities();
+    this.getCorporations();
   }
 
   getCorporations(): void {
@@ -55,20 +55,20 @@ export class CorporationListComponent implements OnInit {
 }
 
 
-  onSelect( corporation: Corporation ){
+  onSelect( corporation: Corporation ) {
     this.selectedCorporation = corporation;
-    this.router.navigate(['./corporation-edit/'+this.selectedCorporation.id]);
+    this.router.navigate(['./corporation-edit/' + this.selectedCorporation.id]);
   }
 
   getCityName(city_id) {
     return function(element) {
-      return element.id == city_id;
-    }
+      return element.id === city_id;
+    };
   }
 
   getCountryName(country_id) {
     return function(element) {
-      return element.id == country_id;
-    }
+      return element.id === country_id;
+    };
   }
 }

@@ -1,7 +1,7 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
-    let countries = [
+    const countries = [
       { id: 1, name: 'Albania' },
       { id: 2, name: 'Belgia' },
       { id: 3, name: 'Chorwacja' },
@@ -11,7 +11,7 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 7, name: 'Rosja' }
     ];
 
-    let cities = [
+    const cities = [
       { id:  1, name: 'Tirana', country_id : 1 },
       { id:  2, name: 'Bruksela', country_id: 2 },
       { id:  3, name: 'Dubrovnik', country_id: 3 },
@@ -26,7 +26,7 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 12, name: 'Poznań', country_id: 6}
     ];
 
-    let corporations = [
+    const corporations = [
       { id: 1, name: 'Albanian Corp.', city: 1, country: 1 },
       { id: 2, name: 'Belgian Choco',  city: 2, country: 2 },
       { id: 3, name: 'Croatian Holidays', city: 3, country: 3 },
@@ -35,6 +35,6 @@ export class InMemoryDataService implements InMemoryDbService {
     ];
 
 
-    return {countries,cities,corporations};
+    return {countries, cities, corporations};
   }
 }
