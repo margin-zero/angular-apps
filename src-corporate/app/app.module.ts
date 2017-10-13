@@ -1,6 +1,7 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule }    from '@angular/http';
+import { FormsModule }   from '@angular/forms';
 
 // Imports for loading & configuring the in-memory web api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -13,6 +14,7 @@ import { CityListComponent }          from './city-list.component';
 import { CityAddComponent }           from './city-add.component';
 import { CountryListComponent }       from './country-list.component';
 import { CountryAddComponent }        from './country-add.component';
+import { CountryEditComponent }       from './country-edit.component';
 import { LocationListComponent }      from './location-list.component';
 
 import { CorporationService }   from './corporation.service';
@@ -28,7 +30,8 @@ import { AppRoutingModule }     from './app-routing.module';
     BrowserModule,
     HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
 
   declarations: [
@@ -39,6 +42,7 @@ import { AppRoutingModule }     from './app-routing.module';
     CityAddComponent,
     CountryListComponent,
     CountryAddComponent,
+    CountryEditComponent,
     LocationListComponent
 
    ],

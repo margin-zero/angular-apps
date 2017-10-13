@@ -41,7 +41,8 @@ export class CountryService {
 
     delete(id: number): Promise<void> {
         const url = `${this.countriesUrl}/${id}`;
-        return this.http.delete(url, {headers: this.headers})
+        return this.http
+          .delete(url, {headers: this.headers})
           .toPromise()
           .then(() => null)
           .catch(this.handleError);
@@ -49,9 +50,18 @@ export class CountryService {
 
     create(countryName: string): Promise<Country> {
         return this.http
-        .post(this.countriesUrl, JSON.stringify({name: countryName}), {headers: this.headers})
-        .toPromise()
-        .then(res => res.json() as Country)
-        .catch(this.handleError);
+          .post(this.countriesUrl, JSON.stringify({name: countryName}), {headers: this.headers})
+          .toPromise()
+          .then(res => res.json() as Country)
+          .catch(this.handleError);
     }
+
+    update(country: Country): Promise<Country> {
+        const url = `${this.countriesUrl}/${country.id}`;
+        return this.http
+          .put(url, JSON.stringify(country), {headers: this.headers})
+          .toPromise()
+          .then(() => country)
+          .catch(this.handleError);
+      }
 }

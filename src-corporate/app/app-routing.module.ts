@@ -6,6 +6,7 @@ import { CityListComponent }      from './city-list.component';
 import { CityAddComponent }      from './city-add.component';
 import { CountryListComponent }      from './country-list.component';
 import { CountryAddComponent }      from './country-add.component';
+import { CountryEditComponent }     from './country-edit.component';
 import { LocationListComponent }      from './location-list.component';
 import { CorporationEditComponent }      from './corporation-edit.component';
 
@@ -19,6 +20,7 @@ const routes: Routes = [
     { path: 'city-add/:id', component: CityAddComponent },
     { path: 'country-list', component: CountryListComponent },
     { path: 'country-add', component: CountryAddComponent },
+    { path: 'country-edit/:id', component: CountryEditComponent },
     { path: '**', redirectTo: 'location-list', pathMatch: 'full' },
   ];
 
