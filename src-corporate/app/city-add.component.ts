@@ -46,9 +46,7 @@ export class CityAddComponent implements OnInit {
       .switchMap((params: ParamMap) => this.countryService.getCountry(+params.get('id')))
       .subscribe(country => this.country = country);
 
-      this.route.paramMap
-      .switchMap((params: ParamMap) => this.countryService.getCountry(+params.get('id')))
-      .subscribe(country => this.countryId = country.id);
+      this.countryId = parseInt(this.route.snapshot.paramMap.get('id'), 10);
     }
 }
 
