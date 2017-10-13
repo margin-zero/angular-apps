@@ -1,7 +1,8 @@
 <div>
     <h4>Dodaj państwo</h4>
     <label>Nazwa:</label> <input #countryName />
-    <button (click)="add(countryName.value); countryName.value=''">
-      Dodaj
-    </button>
+    <button (click)="add(countryName.value); countryName.value=''">Dodaj</button>
+
+    <br />&nbsp;<br />
+    <button (click)="goBack()">Powrót</button>
 </div>

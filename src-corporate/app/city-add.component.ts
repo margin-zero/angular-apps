@@ -1,6 +1,6 @@
 import 'rxjs/add/operator/switchMap';
 
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Location }                 from '@angular/common';
 
@@ -17,16 +17,14 @@ import { CountryService } from './country.service';
     styleUrls: [],
   })
 
-export class CityAddComponent implements OnInit, OnDestroy {
+export class CityAddComponent implements OnInit {
 
     countryId: number;
     country: Country;
 
-    private sub: any;
-
     constructor(
-        private cityService: CityService,
         private countryService: CountryService,
+        private cityService: CityService,
         private router: Router,
         private route: ActivatedRoute,
         private location: Location
@@ -36,7 +34,7 @@ export class CityAddComponent implements OnInit, OnDestroy {
       this.location.back();
     }
 
-    add (cityName: string, countryId: number): void {
+    add(cityName: string, countryId: number): void {
       cityName = cityName.trim();
       if ( !cityName || !countryId ) { this.location.back(); return; }
       this.cityService.create(cityName, countryId);
@@ -44,18 +42,13 @@ export class CityAddComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-      this.sub = this.route.params.subscribe(params => {
-        this.countryId = + params['id'];
-     });
+      this.route.paramMap
+      .switchMap((params: ParamMap) => this.countryService.getCountry(+params.get('id')))
+      .subscribe(country => this.country = country);
 
-     this.countryService
-     .getCountry(this.countryId)
-     .then(country => this.country = country);
+      this.route.paramMap
+      .switchMap((params: ParamMap) => this.countryService.getCountry(+params.get('id')))
+      .subscribe(country => this.countryId = country.id);
     }
-
-    ngOnDestroy() {
-      this.sub.unsubscribe();
-    }
-
 }
 

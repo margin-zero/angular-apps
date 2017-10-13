@@ -1,7 +1,8 @@
-<div>
+<div *ngIf="country">
     <h4>Dodaj miasto w: {{country.name}}</h4>
     <label>Nazwa:</label> <input #cityName />
-    <button (click)="add(cityName.value,countryId); cityName.value=''">
-      Dodaj
-    </button>
+    <button (click)="add(cityName.value,countryId); cityName.value=''">Dodaj</button>
+
+    <br />&nbsp;<br />
+    <button (click)="goBack()">Powrót</button>
 </div>

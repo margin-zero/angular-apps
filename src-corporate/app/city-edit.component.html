@@ -1,0 +1,9 @@
+<div *ngIf="city">
+  <h4>Edytuj miasto: {{city.name}}</h4>
+    <label>Nazwa: </label>
+    <input [(ngModel)]="city.name" placeholder="name" />
+    <button (click)="save()">Zapisz</button>
+
+    <br />&nbsp;<br />
+    <button (click)="goBack()">Powrót</button>
+</div>

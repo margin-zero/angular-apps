@@ -23,6 +23,13 @@ export class CityService {
 
     }
 
+    getCity(id: number): Promise<City> {
+        const url = `${this.citiesUrl}/${id}`;
+        return this.http.get(url)
+          .toPromise()
+          .then(response => response.json() as City)
+          .catch(this.handleError);
+    }
 
     private handleError(error: any): Promise<any> {
         console.error('UWAGA !!! An error occurred', error); // for demo purposes only
@@ -44,4 +51,14 @@ export class CityService {
         .then(res => res.json() as City)
         .catch(this.handleError);
     }
+
+
+    update(city: City): Promise<City> {
+        const url = `${this.citiesUrl}/${city.id}`;
+        return this.http
+          .put(url, JSON.stringify(city), {headers: this.headers})
+          .toPromise()
+          .then(() => city)
+          .catch(this.handleError);
+      }
 }
