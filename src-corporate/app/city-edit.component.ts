@@ -18,7 +18,7 @@ export class CityEditComponent implements OnInit {
 
     city: City;
     countries: Country[];
-    countryId: String = ' ';
+    countryId: number;
 
     constructor(
         private cityService: CityService,
@@ -32,15 +32,16 @@ export class CityEditComponent implements OnInit {
         .switchMap((params: ParamMap) => this.cityService.getCity(+params.get('id')))
         .subscribe(city => this.city = city);
 
+        this.route.paramMap
+        .switchMap((params: ParamMap) => this.cityService.getCity(+params.get('id')))
+        .subscribe(city => this.countryId = city.country_id);
+
         this.getCountries();
     }
 
     save(): void {
-
-        alert(typeof(this.city.country_id));
-
         this.city.name = this.city.name.trim();
-
+        this.city.country_id = 1 * this.countryId;
         if ( !this.city.name || !this.city.country_id) { this.goBack(); return; }
         this.cityService.update(this.city)
           .then(() => this.goBack());

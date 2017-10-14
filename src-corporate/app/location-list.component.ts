@@ -54,7 +54,6 @@ export class LocationListComponent implements OnInit {
   }
 
   countryHasCities(country_id) {
-
     for (let i = 0; i < this.cities.length; i++) {
       if ((1 * this.cities[i].country_id) === country_id) {  return true; }
     }
@@ -62,11 +61,10 @@ export class LocationListComponent implements OnInit {
   }
 
   cityHasCorporations(city) {
-    let c = false;
     for (let i = 0; i < this.corporations.length; i++) {
-      if (this.corporations[i].city === city) { c = true ; return c; }
+      if (this.corporations[i].city === city) { return true; }
     }
-    return c;
+    return false;
   }
 
   deleteCountry(country: Country): void {
@@ -84,5 +82,4 @@ export class LocationListComponent implements OnInit {
           this.cities = this.cities.filter(h => h !== city);
         });
   }
-
 }

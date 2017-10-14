@@ -6,7 +6,7 @@
     <br />
     <label>Państwo: </label>
 
-    <select [(ngModel)]="city.country_id">
+    <select [(ngModel)]="countryId">
         <option *ngFor="let country of countries" value={{country.id}}>{{country.name}}</option>
     </select>
 
