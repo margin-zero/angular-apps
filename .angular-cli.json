@@ -31,9 +31,9 @@
     },
 
     {
-      "name": "tour-of-heroes",
-      "root": "src-tour-of-heroes",
-      "outDir": "dist-tour-of-heroes",
+      "name": "phonebook",
+      "root": "src-phonebook",
+      "outDir": "dist-phonebook",
       "assets": [
         "assets",
         "favicon.ico"
@@ -55,6 +55,7 @@
         "prod": "environments/environment.prod.ts"
       }
     }
+
   ],
   "e2e": {
     "protractor": {
