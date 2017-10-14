@@ -54,11 +54,11 @@ export class LocationListComponent implements OnInit {
   }
 
   countryHasCities(country_id) {
-    let c = false;
+
     for (let i = 0; i < this.cities.length; i++) {
-      if (this.cities[i].country_id === country_id) { c = true; return c; }
+      if ((1 * this.cities[i].country_id) === country_id) {  return true; }
     }
-    return c;
+    return false;
   }
 
   cityHasCorporations(city) {

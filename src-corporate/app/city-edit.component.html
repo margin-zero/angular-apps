@@ -3,6 +3,13 @@
     <label>Nazwa: </label>
     <input [(ngModel)]="city.name" placeholder="name" />
     <button (click)="save()">Zapisz</button>
+    <br />
+    <label>Państwo: </label>
+
+    <select [(ngModel)]="city.country_id">
+        <option *ngFor="let country of countries" value={{country.id}}>{{country.name}}</option>
+    </select>
+
 
     <br />&nbsp;<br />
     <button (click)="goBack()">Powrót</button>

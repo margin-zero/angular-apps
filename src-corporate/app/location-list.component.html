@@ -8,7 +8,7 @@
         
         <tr *ngFor="let country of countries">
             <td>
-                <a routerLink="../country-edit/{{country.id}}" class="location">{{country.name}}</a> <button class="delete" *ngIf="countryHasCities(country.id)==false" (click)="deleteCountry(country); $event.stopPropagation()">x</button>
+                <a routerLink="../country-edit/{{country.id}}" class="location">{{country.name}}</a> - {{countryHasCities(country.id)}} <button class="delete" *ngIf="countryHasCities(country.id)===false" (click)="deleteCountry(country); $event.stopPropagation()">x</button>
             </td>
             <td>
                 <ul class="location-list">

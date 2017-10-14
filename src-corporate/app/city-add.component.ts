@@ -38,7 +38,7 @@ export class CityAddComponent implements OnInit {
       cityName = cityName.trim();
       if ( !cityName || !countryId ) { this.location.back(); return; }
       this.cityService.create(cityName, countryId);
-      this.location.back();
+      this.goBack();
     }
 
     ngOnInit(): void {
