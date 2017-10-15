@@ -60,13 +60,13 @@ export class CorporationListComponent implements OnInit {
     this.router.navigate(['./corporation-edit/' + this.selectedCorporation.id]);
   }
 
-  getCityName(city_id) {
+  getCity(city_id) {
     return function(element) {
       return element.id === city_id;
     };
   }
 
-  getCountryName(country_id) {
+  getCountry(country_id) {
     return function(element) {
       return element.id === country_id;
     };
