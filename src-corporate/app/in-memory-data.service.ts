@@ -27,11 +27,16 @@ export class InMemoryDataService implements InMemoryDbService {
     ];
 
     const corporations = [
-      { id: 1, name: 'Albanian Corp.', city: 1 },
-      { id: 2, name: 'Belgian Choco',  city: 2 },
-      { id: 3, name: 'Croatian Holidays', city: 3 },
-      { id: 4, name: 'Kopenhagen Mermaid', city: 4 },
-      { id: 5, name: 'Tallin Sound Systems', city: 5 }
+      { id: 1, name: 'Albanian Corp.', city: 1, ceo_name: 'Adalina Agalliu',
+        website: 'www.albanian-corp.com', email: 'office@albanian-corp.com' },
+      { id: 2, name: 'Belgian Choco',  city: 2, ceo_name: 'Bruno Chocolatti',
+        website: 'www.belgian-choco.com', email: 'bureau@belgian-choco.com' },
+      { id: 3, name: 'Croatian Holidays', city: 3, ceo_name: 'Zarko Zeljic',
+        website: 'www.croatian-holidays.com', email: 'office@croatian-holidays.com' },
+      { id: 4, name: 'Kopenhagen Mermaid', city: 4, ceo_name: 'Stellan Hangvard',
+        website: 'www.kopenhagen-mermaid.com', email: 'office@kopenhagen-mermaid.com' },
+      { id: 5, name: 'Tallin Sound Systems', city: 5, ceo_name: 'Stobe Kvinuus',
+        website: 'www.tallinss.com', email: 'office@tallinss.com' }
     ];
 
 

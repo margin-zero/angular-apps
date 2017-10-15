@@ -7,6 +7,9 @@
       <th>nazwa</th>
       <th>miasto</th>
       <th>kraj</th>
+      <th>CEO</th>
+      <th>website</th>
+      <th>email</th>
     </tr>
 
     <tr *ngFor="let corporation of corporations" (click)="onSelect(corporation)">
@@ -14,6 +17,9 @@
       <td>{{corporation.name}}</td>
       <td>{{cities.find(getCity(corporation.city)).name}}</td>
       <td>{{countries.find(getCountry(cities.find(getCity(corporation.city)).country_id)).name}}</td>
+      <td>{{corporation.ceo_name}}</td>
+      <td>{{corporation.website}}</td>
+      <td>{{corporation.email}}</td>
 
     </tr>
   
