@@ -31,4 +31,13 @@ export class CorporationService {
         return this.getCorporations()
         .then(corporations => corporations.find(corporation => corporation.id === id));
     }
+
+    update(corporation: Corporation): Promise<Corporation> {
+        const url = `${this.corporationsUrl}/${corporation.id}`;
+        return this.http
+          .put(url, JSON.stringify(corporation), {headers: this.headers})
+          .toPromise()
+          .then(() => corporation)
+          .catch(this.handleError);
+      }
 }

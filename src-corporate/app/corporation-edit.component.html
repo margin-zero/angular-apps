@@ -1,2 +1,30 @@
-corporation-edit.component ;)
-{{corporation.name}} == {{corporation.id}}
+<div *ngIf="corporation">
+        <h4>Edytuj korporację: {{corporation.name}}</h4>
+          <label>Nazwa: </label>
+          <input [(ngModel)]="corporation.name" placeholder="nazwa korporacji" />
+          <br />
+
+          <label>Miasto: </label>
+          <select [(ngModel)]="cityId">
+              <option *ngFor="let city of cities" value={{city.id}}>{{city.name}}</option>
+          </select>
+          <br />
+
+          <label>CEO: </label>
+          <input [(ngModel)]="corporation.ceo_name" placeholder="CEO" />
+          <br />
+
+          <label>www: </label>
+          <input [(ngModel)]="corporation.website" placeholder="website" />
+          <br />
+
+          <label>email: </label>
+          <input [(ngModel)]="corporation.email" placeholder="email kontaktowy" />
+          <br />
+
+
+          <br />&nbsp;<br />
+          <button (click)="save()">Zapisz</button>
+          <br />&nbsp;<br />
+          <button (click)="goBack()">Powrót</button>
+      </div>
