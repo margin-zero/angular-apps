@@ -11,7 +11,7 @@ import { CorporationService } from './corporation.service';
 @Component({
   selector: 'location-list',
   templateUrl: './location-list.component.html',
-  styleUrls: [],
+  styleUrls: ['./location-list.component.css'],
 })
 
 export class LocationListComponent implements OnInit {

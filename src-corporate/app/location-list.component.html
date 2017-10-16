@@ -1,31 +1,38 @@
-<section class="location-list">
-
-    <table>
+<section class="container-fluid">
+    <table class="table table-hover">
+      <thead>
         <tr>
             <th>kraj</th>
-            <th>miasto</th>
+            <th>miasta</th>
         </tr>
+        </thead>
+
+        <tbody>
         
         <tr *ngFor="let country of countries">
             <td>
-                <a routerLink="../country-edit/{{country.id}}" class="location">{{country.name}}</a> - {{countryHasCities(country.id)}} <button class="delete" *ngIf="countryHasCities(country.id)===false" (click)="deleteCountry(country); $event.stopPropagation()">x</button>
+                <a routerLink="../country-edit/{{country.id}}" class="location">{{country.name}}</a>
+                <button type="button" class="btn btn-danger close btn-sm" title="usuń państwo: {{country.name}}" *ngIf="countryHasCities(country.id)===false" (click)="deleteCountry(country); $event.stopPropagation()"><span aria-hidden="true">&times;</span></button>
             </td>
             <td>
-                <ul class="location-list">
                     <ng-template ngFor let-city [ngForOf]="cities">
-                        <li *ngIf="city.country_id == country.id">
-                            <a routerLink="../city-edit/{{city.id}}" class="location">{{city.name}}</a> <button class="delete" *ngIf="cityHasCorporations(city.id)==false" (click)="deleteCity(city); $event.stopPropagation()">x</button>
-                        </li>
+                        <span class="city-link" *ngIf="city.country_id == country.id">
+                            <a routerLink="../city-edit/{{city.id}}" class="location">{{city.name}}</a> 
+                            <button type="button" class="btn btn-danger close btn-sm" title="usuń: miasto {{city.name}}" *ngIf="cityHasCorporations(city.id)==false" (click)="deleteCity(city); $event.stopPropagation()"><span aria-hidden="true">&times;</span></button>
+                        </span>
                     </ng-template>
-                    <li><a routerLink="../city-add/{{country.id}}" class="small">[ dodaj miasto ]</a></li>
-                </ul>
+                    
+                    <a routerLink="../city-add/{{country.id}}" class="small">[ dodaj miasto ]</a>
+
             </td>
         </tr>
 
         <tr>
-            <td><p><a routerLink="../country-add" class="small">[ dodaj państwo ]</a></p></td>
+            <td><p><a routerLink="../country-add" class="small">[&nbsp;dodaj&nbsp;państwo&nbsp;]</a></p></td>
             <td></td>
         </tr>
+        </tbody>
+
     </table>
 
 

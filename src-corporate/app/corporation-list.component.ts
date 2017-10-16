@@ -52,10 +52,10 @@ export class CorporationListComponent implements OnInit {
     this.countryService
     .getCountries()
     .then(countries => this.countries = countries);
-}
+  }
 
 
-  onSelect( corporation: Corporation ) {
+  onClick( corporation: Corporation ) {
     this.selectedCorporation = corporation;
     this.router.navigate(['./corporation-edit/' + this.selectedCorporation.id]);
   }

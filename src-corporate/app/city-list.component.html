@@ -1,19 +1,21 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<section class="city-list">
-  <table>
+<section class="container-fluid">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>nazwa</th>
+        <th>państwo</th>
+      </tr>
+    </thead>
 
-    <tr>
-      <th>id</th>
-      <th>nazwa</th>
-      <th>kraj_id</th>
-    </tr>
-
-    <tr *ngFor="let city of cities">
-      <td>{{city.id}}</td>
-      <td>{{city.name}}</td>
-      <td>{{city.country_id}}</td>
-    </tr>
-  
+    <tbody>
+      <tr *ngFor="let city of cities" (click)="onClick(city)">
+        <td>{{city.id}}</td>
+        <td>{{city.name}}</td>
+        <!-- <td>{{city.country_id}}</td> -->
+        <td>{{countries.find(getCountry(city.country_id)).name}}</td>
+      </tr>
+    </tbody>
   </table>
 </section>
 
