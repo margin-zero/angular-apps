@@ -1,1 +1,1 @@
-.clearfix:after{content:"";display:table;clear:both}.edit-form{background-color:rgba(0,0,0,.1);margin-top:10px;border-radius:4px;border:1px solid rgba(0,0,0,.1)}.edit-form .edit-form-header{margin:20px 0}
+.clearfix:after{content:"";display:table;clear:both}.edit-form{background-color:rgba(0,0,0,.1);margin-top:10px;border-radius:4px;border:1px solid rgba(0,0,0,.1)}.edit-form .edit-form-header{margin:20px 0}.button-delete{cursor:pointer}.button-delete:hover{color:red}.button-add{background:0 0;color:#ccc;border-color:#ccc;font-size:.8rem}.button-add:hover{color:#666}

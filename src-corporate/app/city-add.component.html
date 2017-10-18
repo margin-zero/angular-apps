@@ -1,8 +1,25 @@
-<div *ngIf="country">
-    <h4>Dodaj miasto w: {{country.name}}</h4>
-    <label>Nazwa:</label> <input #cityName />
-    <button (click)="add(cityName.value,countryId); cityName.value=''">Dodaj</button>
-
-    <br />&nbsp;<br />
-    <button (click)="goBack()">Powrót</button>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-sm-8 col-md-6 col-lg-4 edit-form">
+            <h5 class="edit-form-header">Dodaj miasto</h5>
+    
+            <div class="form-group">
+                <label for="inputCityName">Nazwa: </label>
+                <input  #cityName type="text" class="form-control" id="inputCityName" placeholder="nazwa miasta" tabindex="1" required/>
+            </div>
+    
+            <div class="form-group">
+                <label for="inputCountrySelect">Państwo: </label>
+                <select [(ngModel)]="countryId" class="form-control" id="inputCountrySelect" tabindex="2">
+                    <option *ngFor="let country of countries" value={{country.id}}>{{country.name}}</option>
+                </select>
+            </div>
+    
+            <div class="form-group clearfix">
+                <button (click)="add(cityName.value,countryId); cityName.value=''" class="btn btn-primary float-right" tabindex="3">Dodaj</button> 
+                <button (click)="goBack()" class="btn btn-danger float-left" tabindex="0">Powrót</button>
+            </div>
+    
+        </div>
+    </div>
 </div>

@@ -21,6 +21,7 @@ export class CityAddComponent implements OnInit {
 
     countryId: number;
     country: Country;
+    countries: Country[];
 
     constructor(
         private countryService: CountryService,
@@ -37,7 +38,7 @@ export class CityAddComponent implements OnInit {
     add(cityName: string, countryId: number): void {
       cityName = cityName.trim();
       if ( !cityName || !countryId ) { this.location.back(); return; }
-      this.cityService.create(cityName, countryId);
+      this.cityService.create(cityName, 1 * countryId);
       this.goBack();
     }
 
@@ -45,6 +46,10 @@ export class CityAddComponent implements OnInit {
       this.route.paramMap
       .switchMap((params: ParamMap) => this.countryService.getCountry(+params.get('id')))
       .subscribe(country => this.country = country);
+
+      this.route.paramMap
+      .switchMap((params: ParamMap) => this.countryService.getCountries())
+      .subscribe(countries => this.countries = countries);
 
       this.countryId = parseInt(this.route.snapshot.paramMap.get('id'), 10);
     }

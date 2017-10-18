@@ -18,6 +18,7 @@ const routes: Routes = [
     { path: 'corporation-edit/:id', component: CorporationEditComponent },
     { path: 'location-list',  component: LocationListComponent },
     { path: 'city-list', component: CityListComponent },
+    { path: 'city-add', component: CityAddComponent },
     { path: 'city-add/:id', component: CityAddComponent },
     { path: 'city-edit/:id', component: CityEditComponent },
     { path: 'country-list', component: CountryListComponent },
