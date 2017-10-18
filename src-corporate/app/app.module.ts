@@ -9,6 +9,7 @@ import { InMemoryDataService }  from './in-memory-data.service';
 
 import { AppComponent }               from './app.component';
 import { CorporationListComponent }   from './corporation-list.component';
+import { CorporationAddComponent }    from './corporation-add.component';
 import { CorporationEditComponent }   from './corporation-edit.component';
 import { CityListComponent }          from './city-list.component';
 import { CityAddComponent }           from './city-add.component';
@@ -38,6 +39,7 @@ import { AppRoutingModule }     from './app-routing.module';
   declarations: [
     AppComponent,
     CorporationListComponent,
+    CorporationAddComponent,
     CorporationEditComponent,
     CityListComponent,
     CityAddComponent,

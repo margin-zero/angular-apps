@@ -63,5 +63,5 @@ export class CorporationEditComponent implements OnInit {
 
   getCities(): void {
     this.cityService.getCities().then(cities => this.cities = cities);
-}
+  }
 }

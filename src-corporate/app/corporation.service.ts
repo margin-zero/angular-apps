@@ -40,4 +40,13 @@ export class CorporationService {
           .then(() => corporation)
           .catch(this.handleError);
       }
+
+    create(name: string, city: number, email: string, ceo_name: string, website: string): Promise<Corporation> {
+        return this.http
+        .post(this.corporationsUrl, JSON.stringify({
+            name: name, city: city, email: email, ceo_name: ceo_name, website: website }), {headers: this.headers})
+        .toPromise()
+        .then(res => res.json() as Corporation)
+        .catch(this.handleError);
+    }
 }
