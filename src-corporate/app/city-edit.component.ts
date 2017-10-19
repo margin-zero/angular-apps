@@ -42,7 +42,7 @@ export class CityEditComponent implements OnInit {
     save(): void {
         this.city.name = this.city.name.trim();
         this.city.country_id = 1 * this.countryId;
-        if ( !this.city.name || !this.city.country_id) { this.goBack(); return; }
+        if ( !this.city.name || !this.city.country_id) { return; }
         this.cityService.update(this.city)
           .then(() => this.goBack());
     }

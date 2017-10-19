@@ -9,6 +9,7 @@
         <th>CEO</th>
         <th>website</th>
         <th>email</th>
+        <th>&nbsp;</th>
       </tr>
     </thead>
 
@@ -21,10 +22,11 @@
         <td>{{corporation.ceo_name}}</td>
         <td>{{corporation.website}}</td>
         <td>{{corporation.email}}</td>
+        <td><a routerLink="" class="link-delete">[ usuń ]</a></td>
       </tr>
     </tbody>
   </table>
-  <a routerLink="../corporation-add" class="button-add">[ dodaj korporację ]</a>
+  <a routerLink="/corporation-add" class="link-add">[ dodaj korporację ]</a>
 </section>
 
 

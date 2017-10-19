@@ -4,13 +4,13 @@
             <h5 class="edit-form-header">Edytuj miasto: {{city.name}}</h5>
 
             <div class="form-group">
-                <label for="inputCityName">Nazwa: </label>
+                <label for="inputCityName">Nazwa: </label><label class="required">( wymagana )</label>
                 <input  [(ngModel)]="city.name" type="text" class="form-control" id="inputCityName" placeholder="nazwa miasta" tabindex="1" required/>
             </div>
 
             <div class="form-group">
-                <label for="inputCountrySelect">Państwo: </label>
-                <select [(ngModel)]="countryId" class="form-control" id="inputCountrySelect" tabindex="2">
+                <label for="inputCountrySelect">Państwo: </label><label class="required">( wymagane )</label>
+                <select [(ngModel)]="countryId" class="form-control" id="inputCountrySelect" tabindex="2" required>
                     <option *ngFor="let country of countries" value={{country.id}}>{{country.name}}</option>
                 </select>
             </div>

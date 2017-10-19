@@ -22,13 +22,31 @@
     }
 }
 
-.button-add {
-    background: none;
-    color: #cccccc;
-    border-color: #cccccc;
+.link-functional {
+    background: none;    
+    font-size: 0.8rem;
+}
 
+.link-add {
+    .link-functional;
+    color: #cccccc;
     &:hover {
         color: #666666;
     }
-    font-size: 0.8rem;
 }
+
+.link-delete {
+    .link-functional;
+    color: #cccccc;
+    &:hover {
+        color: #cc0000;
+    }
+}
+
+label.required {
+    color: rgba(0,0,0,0.4);
+    font-size: 0.8rem;
+    font-style: oblique;
+    float: right;
+}
+

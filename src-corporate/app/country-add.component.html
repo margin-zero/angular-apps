@@ -4,12 +4,12 @@
             <h5 class="edit-form-header">Dodaj państwo</h5>
 
             <div class="form-group">
-                <label for="inputCountryName">Nazwa: </label>
-                <input  #countryName type="text" class="form-control" id="inputCountryName" placeholder="nazwa państwa" tabindex="1" required />
+                <label for="inputCountryName">Nazwa: </label><label class="required">( wymagana )</label>
+                <input  [(ngModel)]="countryName"  type="text" class="form-control" id="inputCountryName" placeholder="nazwa państwa" tabindex="1" required />
             </div>
     
             <div class="form-group clearfix">
-                <button (click)="add(countryName.value); countryName.value=''" class="btn btn-primary float-right" tabindex="3">Zapisz</button> 
+                <button (click)="add(countryName)" class="btn btn-primary float-right" tabindex="2">Zapisz</button> 
                 <button (click)="goBack()" class="btn btn-danger float-left" tabindex="0">Powrót</button>
             </div>
     

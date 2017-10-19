@@ -27,7 +27,7 @@ export class CountryAddComponent {
 
     add (countryName: string): void {
       countryName = countryName.trim();
-      if (!countryName) { this.location.back(); return; }
+      if (!countryName) { return; }
       this.countryService.create(countryName);
       this.location.back();
     }

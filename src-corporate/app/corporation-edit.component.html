@@ -4,12 +4,12 @@
             <h5 class="edit-form-header">Edytuj korporację: {{corporation.name}}</h5>
     
             <div class="form-group">
-                <label for="inputCorporationName">Nazwa: </label>
+                <label for="inputCorporationName">Nazwa: </label><label class="required">( wymagana )</label>
                 <input  [(ngModel)]="corporation.name" type="text" class="form-control" id="inputCorporationName" placeholder="nazwa korporacji" tabindex="1" required/>
             </div>
     
             <div class="form-group">
-                <label for="inputCitySelect">Miasto: </label>
+                <label for="inputCitySelect">Miasto: </label><label class="required">( wymagane )</label>
                 <select [(ngModel)]="cityId" class="form-control" id="inputCitySelect" tabindex="2">
                     <option *ngFor="let city of cities" value={{city.id}}>{{city.name}}</option>
                 </select>

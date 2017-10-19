@@ -20,7 +20,7 @@ import { CorporationService } from './corporation.service';
 export class CorporationAddComponent implements OnInit {
 
     cities: City[];
-    cityId: number;
+    cityId = 0;
     corporation: Corporation;
 
     constructor(
@@ -48,7 +48,7 @@ export class CorporationAddComponent implements OnInit {
         website = website.trim();
         email = email.trim();
 
-        if ( !name || !this.cityId ) { this.location.back(); return; }
+        if ( !name || !this.cityId ) { return; }
         this.corporationService.create(name, 1 * this.cityId, email, ceoName, website);
         this.goBack();
     }

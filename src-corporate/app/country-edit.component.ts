@@ -30,7 +30,7 @@ export class CountryEditComponent implements OnInit {
 
     save(): void {
         this.country.name = this.country.name.trim();
-        if ( !this.country.name ) { this.location.back(); return; }
+        if ( !this.country.name ) { return; }
         this.countryService.update(this.country)
           .then(() => this.goBack());
     }

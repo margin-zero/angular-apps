@@ -37,7 +37,7 @@ export class CityAddComponent implements OnInit {
 
     add(cityName: string, countryId: number): void {
       cityName = cityName.trim();
-      if ( !cityName || !countryId ) { this.location.back(); return; }
+      if ( !cityName || !countryId ) {  return; }
       this.cityService.create(cityName, 1 * countryId);
       this.goBack();
     }

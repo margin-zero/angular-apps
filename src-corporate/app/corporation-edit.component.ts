@@ -15,7 +15,7 @@ import { City } from './city';
 @Component({
   selector: 'corporation-edit',
   templateUrl: './corporation-edit.component.html',
-  styleUrls: ['./corporation-edit.component.css'],
+  styleUrls: [],
 })
 
 export class CorporationEditComponent implements OnInit {
@@ -52,7 +52,7 @@ export class CorporationEditComponent implements OnInit {
     this.corporation.city = 1 * this.cityId;
 
 
-    if ( !this.corporation.name || !this.corporation.city) { this.goBack(); return; }
+    if ( !this.corporation.name || !this.corporation.city) { return; }
     this.corporationService.update(this.corporation)
       .then(() => this.goBack());
   }

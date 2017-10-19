@@ -4,13 +4,20 @@
                 <h5 class="edit-form-header">Dodaj korporację</h5>
         
                 <div class="form-group">
-                    <label for="inputCorporationName">Nazwa: </label>
-                    <input  #corporationName type="text" class="form-control" id="inputCorporationName" placeholder="nazwa korporacji" tabindex="1" required/>
+                    <label for="inputCorporationName">Nazwa: </label><label class="required">( wymagana )</label>
+                    <input  [(ngModel)]="corporationName" 
+                        type="text" 
+                        class="form-control" 
+                        id="inputCorporationName" 
+                        placeholder="nazwa korporacji" 
+                        tabindex="1" 
+                        value ="" required/>
                 </div>
         
                 <div class="form-group">
-                    <label for="inputCitySelect">Miasto: </label>
-                    <select [(ngModel)]="cityId" class="form-control" id="inputCitySelect" tabindex="2">
+                    <label for="inputCitySelect">Miasto: </label><label class="required">( wymagane )</label>
+                    <select [(ngModel)]="cityId" class="form-control" id="inputCitySelect" tabindex="2" required>
+                        <option value=0>--- wybierz ---</option>                        
                         <option *ngFor="let city of cities" value={{city.id}}>{{city.name}}</option>
                     </select>
                 </div>
@@ -27,11 +34,11 @@
     
                 <div class="form-group">
                         <label for="inputEmail">e-mail: </label>
-                        <input  #corporationEmail type="text" class="form-control" id="inputEmail" placeholder="email kontaktowy" tabindex="5" />
+                        <input  #corporationEmail type="text" class="form-control" id="inputEmail" placeholder="email kontaktowy" tabindex="5"/>
                 </div>
     
                 <div class="form-group clearfix">
-                    <button (click)="add(corporationName.value, corporationCeoName.value, corporationWebsite.value, corporationEmail.value)" class="btn btn-primary float-right" tabindex="6">Zapisz</button> 
+                    <button (click)="add(corporationName, corporationCeoName.value, corporationWebsite.value, corporationEmail.value)" class="btn btn-primary float-right" tabindex="6">Zapisz</button> 
                     <button (click)="goBack()" class="btn btn-danger float-left" tabindex="0">Powrót</button>
                 </div>
         
