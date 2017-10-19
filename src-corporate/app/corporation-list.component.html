@@ -14,15 +14,17 @@
     </thead>
 
     <tbody>
-      <tr *ngFor="let corporation of corporations" (click)="onClick(corporation)">
-        <td>{{corporation.id}}</td>
-        <td>{{corporation.name}}</td>
-        <td>{{cities.find(getCity(corporation.city)).name}}</td>
-        <td>{{countries.find(getCountry(cities.find(getCity(corporation.city)).country_id)).name}}</td>
-        <td>{{corporation.ceo_name}}</td>
-        <td>{{corporation.website}}</td>
-        <td>{{corporation.email}}</td>
-        <td><a routerLink="" class="link-delete">[ usuń ]</a></td>
+      <tr *ngFor="let corporation of corporations">
+
+        <td (click)="onClick(corporation)">{{corporation.id}}</td>
+        <td (click)="onClick(corporation)">{{corporation.name}}</td>
+        <td (click)="onClick(corporation)">{{cities.find(getCity(corporation.city)).name}}</td>
+        <td (click)="onClick(corporation)">{{countries.find(getCountry(cities.find(getCity(corporation.city)).country_id)).name}}</td>
+        <td (click)="onClick(corporation)">{{corporation.ceo_name}}</td>
+        <td (click)="onClick(corporation)">{{corporation.website}}</td>
+        <td (click)="onClick(corporation)">{{corporation.email}}</td>
+
+        <td><button (click)="deleteCorporation(corporation)" class="btn btn-danger float-right">Usuń</button></td>
       </tr>
     </tbody>
   </table>

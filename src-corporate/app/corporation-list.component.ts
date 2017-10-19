@@ -71,4 +71,12 @@ export class CorporationListComponent implements OnInit {
       return element.id === country_id;
     };
   }
+
+  deleteCorporation(corporation: Corporation): void {
+    this.corporationService
+        .delete(corporation.id)
+        .then(() => {
+          this.corporations = this.corporations.filter(h => h !== corporation);
+        });
+  }
 }

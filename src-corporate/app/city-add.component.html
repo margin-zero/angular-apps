@@ -5,7 +5,7 @@
     
             <div class="form-group">
                 <label for="inputCityName">Nazwa: </label><label class="required">( wymagana )</label>
-                <input  #cityName type="text" class="form-control" id="inputCityName" placeholder="nazwa miasta" tabindex="1" required/>
+                <input  [(ngModel)]="cityName" type="text" class="form-control" id="inputCityName" placeholder="nazwa miasta" tabindex="1" required/>
             </div>
     
             <div class="form-group">
@@ -16,7 +16,7 @@
             </div>
     
             <div class="form-group clearfix">
-                <button (click)="add(cityName.value,countryId)" class="btn btn-primary float-right" tabindex="3">Dodaj</button> 
+                <button (click)="add(cityName,countryId)" class="btn btn-primary float-right" tabindex="3">Dodaj</button> 
                 <button (click)="goBack()" class="btn btn-danger float-left" tabindex="0">Powrót</button>
             </div>
     
