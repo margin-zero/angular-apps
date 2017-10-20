@@ -1,16 +1,30 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule }    from '@angular/http';
+
+// Imports for loading & configuring the in-memory web api
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService }  from './in-memory-data.service';
 
 import { AppComponent } from './app.component';
+import { PhonebookComponent } from './phonebook.component';
+
+import { PersonService } from './person.service';
+
+import { AppRoutingModule }     from './app-routing.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PhonebookComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpModule,
+    InMemoryWebApiModule.forRoot(InMemoryDataService),
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [ PersonService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

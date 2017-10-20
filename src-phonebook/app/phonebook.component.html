@@ -1,0 +1,23 @@
+<section class="container-fluid">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>nazwisko</th>
+          <th>oddział</th>
+          <th>stanowisko</th>
+          <th>telefon</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <tr *ngFor="let person of persons">
+            <td>{{person.id}}</td>
+            <td>{{person.name}}</td>
+            <td>{{person.department}}</td>
+            <td>{{person.position}}</td>
+            <td>{{person.phone}}</td>
+        </tr>
+      </tbody>
+    </table>
+</section>
