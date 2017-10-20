@@ -21,8 +21,8 @@
         <td (click)="onClick(corporation)">{{cities.find(getCity(corporation.city)).name}}</td>
         <td (click)="onClick(corporation)">{{countries.find(getCountry(cities.find(getCity(corporation.city)).country_id)).name}}</td>
         <td (click)="onClick(corporation)">{{corporation.ceo_name}}</td>
-        <td (click)="onClick(corporation)">{{corporation.website}}</td>
-        <td (click)="onClick(corporation)">{{corporation.email}}</td>
+        <td><a href="http://{{corporation.website}}">{{corporation.website}}</a></td>
+        <td><a href="mailto:{{corporation.email}}">{{corporation.email}}</a></td>
 
         <td><button (click)="deleteCorporation(corporation)" class="btn btn-sm btn-danger float-right">Usuń</button></td>
       </tr>
