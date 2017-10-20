@@ -5,15 +5,16 @@
         <th>id</th>
         <th>nazwa</th>
         <th>państwo</th>
+        <th>&nbsp;</th>
       </tr>
     </thead>
 
     <tbody>
-      <tr *ngFor="let city of cities" (click)="onClick(city)">
-        <td>{{city.id}}</td>
-        <td>{{city.name}}</td>
-        <!-- <td>{{city.country_id}}</td> -->
-        <td>{{countries.find(getCountry(city.country_id)).name}}</td>
+      <tr *ngFor="let city of cities">
+        <td (click)="onClick(city)">{{city.id}}</td>
+        <td (click)="onClick(city)">{{city.name}}</td>
+        <td (click)="onClick(city)">{{countries.find(getCountry(city.country_id)).name}}</td>
+        <td><button *ngIf="!cityHasCorporations(city.id)" (click)="deleteCity(city)" class="btn btn-sm btn-danger float-right">Usuń miasto</button></td>
       </tr>
     </tbody>
   </table>

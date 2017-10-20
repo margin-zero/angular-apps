@@ -4,13 +4,15 @@
       <tr>
         <th>id</th>
         <th>nazwa</th>
+        <th>&nbsp;</th>
       </tr>
     </thead>
 
     <tbody>
-      <tr *ngFor="let country of countries" (click)="onClick(country)">
-        <td>{{country.id}}</td>
-        <td>{{country.name}}</td>
+      <tr *ngFor="let country of countries">
+        <td (click)="onClick(country)">{{country.id}}</td>
+        <td (click)="onClick(country)">{{country.name}}</td>
+        <td><button *ngIf="!countryHasCities(country.id)" (click)="deleteCountry(country)" class="btn btn-sm btn-danger float-right">Usuń państwo</button></td>
       </tr>
     </tbody>
   </table>

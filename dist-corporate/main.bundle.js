@@ -395,7 +395,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src-corporate/app/city-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"container-fluid\">\r\n  <table class=\"table table-hover\">\r\n    <thead>\r\n      <tr>\r\n        <th>id</th>\r\n        <th>nazwa</th>\r\n        <th>państwo</th>\r\n      </tr>\r\n    </thead>\r\n\r\n    <tbody>\r\n      <tr *ngFor=\"let city of cities\" (click)=\"onClick(city)\">\r\n        <td>{{city.id}}</td>\r\n        <td>{{city.name}}</td>\r\n        <!-- <td>{{city.country_id}}</td> -->\r\n        <td>{{countries.find(getCountry(city.country_id)).name}}</td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n  <a routerLink=\"/city-add\" class=\"link-add\">[ dodaj miasto ]</a>\r\n</section>\r\n\r\n\r\n"
+module.exports = "<section class=\"container-fluid\">\r\n  <table class=\"table table-hover\">\r\n    <thead>\r\n      <tr>\r\n        <th>id</th>\r\n        <th>nazwa</th>\r\n        <th>państwo</th>\r\n        <th>&nbsp;</th>\r\n      </tr>\r\n    </thead>\r\n\r\n    <tbody>\r\n      <tr *ngFor=\"let city of cities\">\r\n        <td (click)=\"onClick(city)\">{{city.id}}</td>\r\n        <td (click)=\"onClick(city)\">{{city.name}}</td>\r\n        <td (click)=\"onClick(city)\">{{countries.find(getCountry(city.country_id)).name}}</td>\r\n        <td><button *ngIf=\"!cityHasCorporations(city.id)\" (click)=\"deleteCity(city)\" class=\"btn btn-sm btn-danger float-right\">Usuń miasto</button></td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n  <a routerLink=\"/city-add\" class=\"link-add\">[ dodaj miasto ]</a>\r\n</section>\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -408,6 +408,7 @@ module.exports = "<section class=\"container-fluid\">\r\n  <table class=\"table 
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__city_service__ = __webpack_require__("../../../../../src-corporate/app/city.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__country_service__ = __webpack_require__("../../../../../src-corporate/app/country.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__corporation_service__ = __webpack_require__("../../../../../src-corporate/app/corporation.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -421,10 +422,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var CityListComponent = (function () {
-    function CityListComponent(cityService, countryService, router) {
+    function CityListComponent(cityService, countryService, corporationService, router) {
         this.cityService = cityService;
         this.countryService = countryService;
+        this.corporationService = corporationService;
         this.router = router;
     }
     CityListComponent.prototype.getCities = function () {
@@ -439,7 +442,12 @@ var CityListComponent = (function () {
             .getCountries()
             .then(function (countries) { return _this.countries = countries; });
     };
+    CityListComponent.prototype.getCorporations = function () {
+        var _this = this;
+        this.corporationService.getCorporations().then(function (corporations) { return _this.corporations = corporations; });
+    };
     CityListComponent.prototype.ngOnInit = function () {
+        this.getCorporations();
         this.getCountries();
         this.getCities();
     };
@@ -456,6 +464,22 @@ var CityListComponent = (function () {
             return element.id === country_id;
         };
     };
+    CityListComponent.prototype.cityHasCorporations = function (city) {
+        for (var i = 0; i < this.corporations.length; i++) {
+            if (this.corporations[i].city === city) {
+                return true;
+            }
+        }
+        return false;
+    };
+    CityListComponent.prototype.deleteCity = function (city) {
+        var _this = this;
+        this.cityService
+            .delete(city.id)
+            .then(function () {
+            _this.cities = _this.cities.filter(function (h) { return h !== city; });
+        });
+    };
     return CityListComponent;
 }());
 CityListComponent = __decorate([
@@ -464,10 +488,10 @@ CityListComponent = __decorate([
         template: __webpack_require__("../../../../../src-corporate/app/city-list.component.html"),
         styles: [__webpack_require__("../../../../../src-corporate/app/city-list.component.css")],
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__city_service__["a" /* CityService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__city_service__["a" /* CityService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__country_service__["a" /* CountryService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__country_service__["a" /* CountryService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__city_service__["a" /* CityService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__city_service__["a" /* CityService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__country_service__["a" /* CountryService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__country_service__["a" /* CountryService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__corporation_service__["a" /* CorporationService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__corporation_service__["a" /* CorporationService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _d || Object])
 ], CityListComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d;
 //# sourceMappingURL=city-list.component.js.map
 
 /***/ }),
@@ -737,7 +761,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src-corporate/app/corporation-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"container-fluid\">\r\n  <table class=\"table table-hover\">\r\n    <thead>\r\n      <tr>\r\n        <th>id</th>\r\n        <th>nazwa</th>\r\n        <th>miasto</th>\r\n        <th>państwo</th>\r\n        <th>CEO</th>\r\n        <th>website</th>\r\n        <th>email</th>\r\n        <th>&nbsp;</th>\r\n      </tr>\r\n    </thead>\r\n\r\n    <tbody>\r\n      <tr *ngFor=\"let corporation of corporations\">\r\n\r\n        <td (click)=\"onClick(corporation)\">{{corporation.id}}</td>\r\n        <td (click)=\"onClick(corporation)\">{{corporation.name}}</td>\r\n        <td (click)=\"onClick(corporation)\">{{cities.find(getCity(corporation.city)).name}}</td>\r\n        <td (click)=\"onClick(corporation)\">{{countries.find(getCountry(cities.find(getCity(corporation.city)).country_id)).name}}</td>\r\n        <td (click)=\"onClick(corporation)\">{{corporation.ceo_name}}</td>\r\n        <td (click)=\"onClick(corporation)\">{{corporation.website}}</td>\r\n        <td (click)=\"onClick(corporation)\">{{corporation.email}}</td>\r\n\r\n        <td><button (click)=\"deleteCorporation(corporation)\" class=\"btn btn-danger float-right\">Usuń</button></td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n  <a routerLink=\"/corporation-add\" class=\"link-add\">[ dodaj korporację ]</a>\r\n</section>\r\n\r\n\r\n"
+module.exports = "<section class=\"container-fluid\">\r\n  <table class=\"table table-hover\">\r\n    <thead>\r\n      <tr>\r\n        <th>id</th>\r\n        <th>nazwa</th>\r\n        <th>miasto</th>\r\n        <th>państwo</th>\r\n        <th>CEO</th>\r\n        <th>website</th>\r\n        <th>email</th>\r\n        <th>&nbsp;</th>\r\n      </tr>\r\n    </thead>\r\n\r\n    <tbody>\r\n      <tr *ngFor=\"let corporation of corporations\">\r\n\r\n        <td (click)=\"onClick(corporation)\">{{corporation.id}}</td>\r\n        <td (click)=\"onClick(corporation)\">{{corporation.name}}</td>\r\n        <td (click)=\"onClick(corporation)\">{{cities.find(getCity(corporation.city)).name}}</td>\r\n        <td (click)=\"onClick(corporation)\">{{countries.find(getCountry(cities.find(getCity(corporation.city)).country_id)).name}}</td>\r\n        <td (click)=\"onClick(corporation)\">{{corporation.ceo_name}}</td>\r\n        <td (click)=\"onClick(corporation)\">{{corporation.website}}</td>\r\n        <td (click)=\"onClick(corporation)\">{{corporation.email}}</td>\r\n\r\n        <td><button (click)=\"deleteCorporation(corporation)\" class=\"btn btn-sm btn-danger float-right\">Usuń</button></td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n  <a routerLink=\"/corporation-add\" class=\"link-add\">[ dodaj korporację ]</a>\r\n</section>\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -1066,7 +1090,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src-corporate/app/country-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"container-fluid\">\r\n  <table class=\"table table-hover\">\r\n    <thead>\r\n      <tr>\r\n        <th>id</th>\r\n        <th>nazwa</th>\r\n      </tr>\r\n    </thead>\r\n\r\n    <tbody>\r\n      <tr *ngFor=\"let country of countries\" (click)=\"onClick(country)\">\r\n        <td>{{country.id}}</td>\r\n        <td>{{country.name}}</td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n  <a routerLink=\"/country-add\" class=\"link-add\">[ dodaj państwo ]</a>\r\n</section>\r\n\r\n\r\n"
+module.exports = "<section class=\"container-fluid\">\r\n  <table class=\"table table-hover\">\r\n    <thead>\r\n      <tr>\r\n        <th>id</th>\r\n        <th>nazwa</th>\r\n        <th>&nbsp;</th>\r\n      </tr>\r\n    </thead>\r\n\r\n    <tbody>\r\n      <tr *ngFor=\"let country of countries\">\r\n        <td (click)=\"onClick(country)\">{{country.id}}</td>\r\n        <td (click)=\"onClick(country)\">{{country.name}}</td>\r\n        <td><button *ngIf=\"!countryHasCities(country.id)\" (click)=\"deleteCountry(country)\" class=\"btn btn-sm btn-danger float-right\">Usuń państwo</button></td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n  <a routerLink=\"/country-add\" class=\"link-add\">[ dodaj państwo ]</a>\r\n</section>\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -1078,6 +1102,7 @@ module.exports = "<section class=\"container-fluid\">\r\n  <table class=\"table 
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__country_service__ = __webpack_require__("../../../../../src-corporate/app/country.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__city_service__ = __webpack_require__("../../../../../src-corporate/app/city.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1090,9 +1115,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var CountryListComponent = (function () {
-    function CountryListComponent(countryService, router) {
+    function CountryListComponent(countryService, cityService, router) {
         this.countryService = countryService;
+        this.cityService = cityService;
         this.router = router;
     }
     CountryListComponent.prototype.getCountries = function () {
@@ -1101,11 +1128,34 @@ var CountryListComponent = (function () {
             .getCountries()
             .then(function (countries) { return _this.countries = countries; });
     };
+    CountryListComponent.prototype.getCities = function () {
+        var _this = this;
+        this.cityService
+            .getCities()
+            .then(function (cities) { return _this.cities = cities; });
+    };
     CountryListComponent.prototype.ngOnInit = function () {
+        this.getCities();
         this.getCountries();
     };
     CountryListComponent.prototype.onClick = function (country) {
         this.router.navigate(['./country-edit/' + country.id]);
+    };
+    CountryListComponent.prototype.countryHasCities = function (country_id) {
+        for (var i = 0; i < this.cities.length; i++) {
+            if ((1 * this.cities[i].country_id) === country_id) {
+                return true;
+            }
+        }
+        return false;
+    };
+    CountryListComponent.prototype.deleteCountry = function (country) {
+        var _this = this;
+        this.countryService
+            .delete(country.id)
+            .then(function () {
+            _this.countries = _this.countries.filter(function (h) { return h !== country; });
+        });
     };
     return CountryListComponent;
 }());
@@ -1115,10 +1165,10 @@ CountryListComponent = __decorate([
         template: __webpack_require__("../../../../../src-corporate/app/country-list.component.html"),
         styles: [__webpack_require__("../../../../../src-corporate/app/country-list.component.css")],
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__country_service__["a" /* CountryService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__country_service__["a" /* CountryService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__country_service__["a" /* CountryService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__country_service__["a" /* CountryService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__city_service__["a" /* CityService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__city_service__["a" /* CityService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _c || Object])
 ], CountryListComponent);
 
-var _a, _b;
+var _a, _b, _c;
 //# sourceMappingURL=country-list.component.js.map
 
 /***/ }),
