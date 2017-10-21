@@ -15,7 +15,6 @@ export class InMemoryDataService implements InMemoryDbService {
                 phone: '+48 (022) 51-33-234', cellular: '101 344 875', email: 'fkowalczyk@hr.pl', position: 'Kierownik działu' },
           { id: 6, name: 'Maja Kamińska', department: 'HR',
                 phone: '+48 (022) 51-24-544', cellular: '111 346 985', email: 'mkaminska@hr.pl', position: 'Dyrektor departamentu' },
-
         ];
         return {persons};
       }

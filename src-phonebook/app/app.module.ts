@@ -11,6 +11,8 @@ import { PhonebookComponent } from './phonebook.component';
 
 import { PersonService } from './person.service';
 
+import { PersonGenerator } from './person-generator';
+
 import { AppRoutingModule }     from './app-routing.module';
 
 @NgModule({
@@ -24,7 +26,7 @@ import { AppRoutingModule }     from './app-routing.module';
     InMemoryWebApiModule.forRoot(InMemoryDataService),
     AppRoutingModule
   ],
-  providers: [ PersonService ],
+  providers: [ PersonService, PersonGenerator ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

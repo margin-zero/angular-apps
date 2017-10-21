@@ -6,17 +6,23 @@
           <th>nazwisko</th>
           <th>oddział</th>
           <th>stanowisko</th>
-          <th>telefon</th>
+          <th>tel. wewn.</th>
+          <th>tel.</th>
+          <th>cell.</th>
+          <th>email</th>
         </tr>
       </thead>
   
       <tbody>
         <tr *ngFor="let person of persons">
             <td>{{person.id}}</td>
-            <td>{{person.name}}</td>
+            <td>{{person.name}} {{person.surname}}</td>
             <td>{{person.department}}</td>
             <td>{{person.position}}</td>
+            <td>{{person.internal}}</td>
             <td>{{person.phone}}</td>
+            <td>{{person.cellular}}</td>
+            <td>{{person.email}}</td>
         </tr>
       </tbody>
     </table>
