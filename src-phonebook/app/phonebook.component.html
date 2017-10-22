@@ -26,4 +26,7 @@
         </tr>
       </tbody>
     </table>
+
+    
+    <a *ngFor="let person of filteredPersons" routerLink='/phonebook/{{person.id}}'>{{person.id}}</a>
 </section>
