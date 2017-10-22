@@ -1,28 +1,28 @@
 <section class="container-fluid">
+    <!-- <input [(ngModel)]="filter" type="text">-->
+    <input  [(ngModel)]="filter" (dblclick)="filter='';filterData()" (ngModelChange)="filterData()" type="text" class="form-control" id="inputFilter" placeholder="szukaj... (dwuklik usuwa wprowadzony filtr)" tabindex="1" />
     <table class="table table-hover">
       <thead>
         <tr>
-          <th>id</th>
-          <th>nazwisko</th>
-          <th>oddział</th>
-          <th>stanowisko</th>
-          <th>tel. wewn.</th>
-          <th>tel.</th>
-          <th>cell.</th>
-          <th>email</th>
+          <th (click)="sortByNames()">nazwisko</th>
+          <th (click)="sortByPosition()">stanowisko</th>
+          <th (click)="sortByDepartment()">oddział</th>
+          <th (click)="sortByInternal()">tel. wewn.</th>
+          <th (click)="sortByPhone()">tel.</th>
+          <th (click)="sortByCellular()">cell.</th>
+          <th (click)="sortByEmail()">email</th>
         </tr>
       </thead>
   
       <tbody>
-        <tr *ngFor="let person of persons">
-            <td>{{person.id}}</td>
+        <tr *ngFor="let person of filteredPersons">
             <td>{{person.name}} {{person.surname}}</td>
-            <td>{{person.department}}</td>
             <td>{{person.position}}</td>
+            <td>{{person.department}}</td>
             <td>{{person.internal}}</td>
             <td>{{person.phone}}</td>
             <td>{{person.cellular}}</td>
-            <td>{{person.email}}</td>
+            <td><a href='mailto:{{person.email}}'>{{person.email}}</a></td>
         </tr>
       </tbody>
     </table>
