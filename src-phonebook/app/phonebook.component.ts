@@ -17,14 +17,13 @@ import { PersonGenerator } from './person-generator';
 export class PhonebookComponent implements OnInit {
 
   private persons: Person[];
-
   private filteredPersons: Person[];
-
   private filter: String = '';
-
   private page = 1;
-
   private totalPages: number;
+  private paginator: number[];
+  private orderBy = ' ';
+  private sortOrder = 'ascending';
 
   constructor(
     private personService: PersonService,
@@ -34,39 +33,40 @@ export class PhonebookComponent implements OnInit {
     private personGenerator: PersonGenerator
   ) {}
 
+
   ngOnInit(): void {
-    this.generatePersons();
-    this.getPersons();
-    if (this.route.snapshot.paramMap.get('page')) {
+    this.generatePersons();  // wygeneruj losowe osoby w bazie danych
+    this.personService
+      .getPersons()                               // pobierz osoby z bazy danych...
+      .then(persons => this.setPersons(persons)); // ...a potem wywołaj setPersons
+    if (this.route.snapshot.paramMap.get('page')) {  // odczytaj numer strony z odnośnika (o ile jest tam numer strony)
       this.page = parseInt(this.route.snapshot.paramMap.get('page'), 10);
     }
   }
 
-  getPersons(): void {
-    this.personService
-    .getPersons()
-    .then(persons => this.setPersons(persons));
-  }
-
   setPersons(persons): void {
-    this.persons = persons;
-    this.filterData();
-    this.totalPages = Math.ceil(this.filteredPersons.length / 10);
+    this.persons = persons;   // przepisz pobrane osoby do lokalnej tablicy
+    this.filterData();        // przygotuj tablicę z odfiltrowanymi osobami
+    this.sortBy('name');      // posortuj wstępnie wg nazwiska
+    this.totalPages = Math.ceil(this.filteredPersons.length / 10);  // oblicz ilość stron potrzebną do wyświetlenia przefiltrowanych wyników
   }
 
+  // funkcja wypełniająca książkę telefoniczną danymi losowych osób
   generatePersons(): void {
     let i: number;
-
     for ( i = 1; i <= 100; i++ ) {
       this.personService.create(this.personGenerator.generatePerson());
     }
   }
 
+  // funkcja aktualizująca filteredPersons[] po każdej zmianie wartości pola filtra
   filterData(): void {
     this.filteredPersons = this.persons.filter(this.filterArray, this);
+    this.sortBy(this.orderBy); // po zaktualizowaniu filteredPersons[] wywołujemy sortowanie w/g aktualnych kryteriów
   }
 
 
+  // funkcja filtrująca - definicja filtra dla funkcji persons.filter[]
   filterArray(element, index, array) {
       return (
         (
@@ -76,92 +76,82 @@ export class PhonebookComponent implements OnInit {
         )
         .toLowerCase().indexOf(this.filter.toLowerCase().trim()) > - 1)
         );
-
-      // return element.name.indexOf(this.filter) > -1;
-
   }
 
 
-  sortByNames(): void {
-    this.filteredPersons.sort(this.compareNames);
-    this.resetPage();
+  // funkcja sortująca przefiltrowane dane
+  sortBy(orderBy: string): void {
+
+    orderBy = orderBy.trim().toLowerCase();
+
+    if (orderBy !== this.orderBy) {    // jeśli kryterium ma być inne niż dotychczas - ustaw kolejność na rosnącą
+      this.sortOrder = 'ascending';
+    } else {                           // w przeciwnym wypadku (kryterium takie same)
+      this.filteredPersons.reverse();  // odwróć kolejność tablicy i zmień wartość this.sortOrder na odwrotną
+      if (this.sortOrder === 'ascending') {
+        this.sortOrder = 'descending';
+      } else {
+        this.sortOrder = 'ascending';
+      }
+    }
+
+  if (orderBy !== this.orderBy) {  // jeśli zmienia się kryterium sortowania to uruchamiamy sortowanie rosnące
+    switch (orderBy) {
+      case 'name':
+        this.filteredPersons.sort(this.compareNamesAsc);
+        break;
+      case 'position':
+        this.filteredPersons.sort(this.comparePositionsAsc);
+        break;
+      case 'department':
+        this.filteredPersons.sort(this.compareDepartmentsAsc);
+        break;
+      case 'internal':
+        this.filteredPersons.sort(this.compareInternalsAsc);
+        break;
+      case 'phone':
+        this.filteredPersons.sort(this.comparePhonesAsc);
+        break;
+      case 'cellular':
+        this.filteredPersons.sort(this.compareCellularsAsc);
+        break;
+      case 'email':
+        this.filteredPersons.sort(this.compareEmailsAsc);
+        break;
+    }
+    this.orderBy = orderBy; // ostatecznie wpisujemy aktualną kolejność w this.orderBy
   }
 
-  sortByPosition(): void {
-    this.filteredPersons.sort(this.comparePositions);
-    this.resetPage();
-  }
-
-  sortByDepartment(): void {
-    this.filteredPersons.sort(this.compareDepartments);
-    this.resetPage();
-  }
-
-  sortByInternal(): void {
-    this.filteredPersons.sort(this.compareInternals);
-    this.resetPage();
-  }
-
-  sortByPhone(): void {
-    this.filteredPersons.sort(this.comparePhones);
-    this.resetPage();
-  }
-
-  sortByCellular(): void {
-    this.filteredPersons.sort(this.compareCellulars);
-    this.resetPage();
-  }
-
-  sortByEmail(): void {
-    this.filteredPersons.sort(this.compareEmails);
     this.resetPage();
   }
 
 
   private resetPage() {
     this.page = 1;
-    alert(this.page);
-  }
-  compareNames(person1, person2) {
-    if ((person1.name + ' ' + person1.surname) < (person2.name + ' ' + person2.surname)) { return -1; }
-    if ((person1.name + ' ' + person1.surname) > (person2.name + ' ' + person2.surname)) { return  1; }
-    return 0;
   }
 
-  comparePositions(person1, person2) {
-    if ((person1.position) < (person2.position)) { return -1; }
-    if ((person1.position) > (person2.position)) { return  1; }
-    return 0;
-  }
 
-  compareDepartments(person1, person2) {
-    if ((person1.department) < (person2.department)) { return -1; }
-    if ((person1.department) > (person2.department)) { return  1; }
-    return 0;
+  // funkcje sortujące rosnąco wg określonych kryteriów / kolumn
+  compareNamesAsc(person1, person2) {
+    return (person1.name + ' ' + person1.surname).localeCompare(person2.name + ' ' + person2.surname);
   }
-
-  compareInternals(person1, person2) {
-    if ((person1.internal) < (person2.internal)) { return -1; }
-    if ((person1.internal) > (person2.internal)) { return  1; }
-    return 0;
+  comparePositionsAsc(person1, person2) {
+    return person1.position.localeCompare(person2.position);
   }
-
-  comparePhones(person1, person2) {
-    if ((person1.phone) < (person2.phone)) { return -1; }
-    if ((person1.phone) > (person2.phone)) { return  1; }
-    return 0;
+  compareDepartmentsAsc(person1, person2) {
+    return person1.department.localeCompare(person2.department);
   }
-
-  compareCellulars(person1, person2) {
-    if ((person1.cellular) < (person2.cellular)) { return -1; }
-    if ((person1.cellular) > (person2.cellular)) { return  1; }
-    return 0;
+  compareInternalsAsc(person1, person2) {
+    return person1.internal.localeCompare(person2.internal);
   }
-
-  compareEmails(person1, person2) {
-    if ((person1.email) < (person2.email)) { return -1; }
-    if ((person1.email) > (person2.email)) { return  1; }
-    return 0;
+  comparePhonesAsc(person1, person2) {
+    return person1.phone.localeCompare(person2.phone);
+  }
+  compareCellularsAsc(person1, person2) {
+    return person1.cellular.localeCompare(person2.cellular);
+  }
+  compareEmailsAsc(person1, person2) {
+    return person1.email.localeCompare(person2.email);
   }
 
 }

@@ -1,16 +1,15 @@
 <section class="container-fluid">
-    <!-- <input [(ngModel)]="filter" type="text">-->
     <input  [(ngModel)]="filter" (dblclick)="filter='';filterData()" (ngModelChange)="filterData()" type="text" class="form-control" id="inputFilter" placeholder="szukaj... (dwuklik usuwa wprowadzony filtr)" tabindex="1" />
     <table class="table table-hover">
       <thead>
         <tr>
-          <th (click)="sortByNames()">nazwisko</th>
-          <th (click)="sortByPosition()">stanowisko</th>
-          <th (click)="sortByDepartment()">oddział</th>
-          <th (click)="sortByInternal()">tel. wewn.</th>
-          <th (click)="sortByPhone()">tel.</th>
-          <th (click)="sortByCellular()">cell.</th>
-          <th (click)="sortByEmail()">email</th>
+          <th (click)="sortBy('name')">nazwisko</th>
+          <th (click)="sortBy('position')">stanowisko</th>
+          <th (click)="sortBy('department')">oddział</th>
+          <th (click)="sortBy('internal')">tel. wewn.</th>
+          <th (click)="sortBy('phone')">tel.</th>
+          <th (click)="sortBy('cellular')">cell.</th>
+          <th (click)="sortBy('email')">email</th>
         </tr>
       </thead>
   
