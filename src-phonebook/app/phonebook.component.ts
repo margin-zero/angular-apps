@@ -24,6 +24,7 @@ export class PhonebookComponent implements OnInit {
   private paginator: number[];
   private orderBy = ' ';
   private sortOrder = 'ascending';
+  private sub;
 
   constructor(
     private personService: PersonService,
@@ -39,9 +40,10 @@ export class PhonebookComponent implements OnInit {
     this.personService
       .getPersons()                               // pobierz osoby z bazy danych...
       .then(persons => this.setPersons(persons)); // ...a potem wywołaj setPersons
-    if (this.route.snapshot.paramMap.get('page')) {  // odczytaj numer strony z odnośnika (o ile jest tam numer strony)
-      this.page = parseInt(this.route.snapshot.paramMap.get('page'), 10);
-    }
+
+    this.sub = this.route.params.subscribe((params) => {  // subskrybujemy parametry z routera
+      this.page = params['page'];
+    });
   }
 
   setPersons(persons): void {
@@ -49,6 +51,10 @@ export class PhonebookComponent implements OnInit {
     this.filterData();        // przygotuj tablicę z odfiltrowanymi osobami
     this.sortBy('name');      // posortuj wstępnie wg nazwiska
     this.totalPages = Math.ceil(this.filteredPersons.length / 10);  // oblicz ilość stron potrzebną do wyświetlenia przefiltrowanych wyników
+    this.paginator = [];      // czyścimy tablicę z numerami stron
+    for ( let i = 1 ; i <= this.totalPages; i++) {
+      this.paginator.push(i); // wypełniamy tablicę numerami stron
+    }
   }
 
   // funkcja wypełniająca książkę telefoniczną danymi losowych osób
@@ -62,9 +68,12 @@ export class PhonebookComponent implements OnInit {
   // funkcja aktualizująca filteredPersons[] po każdej zmianie wartości pola filtra
   filterData(): void {
     this.filteredPersons = this.persons.filter(this.filterArray, this);
-    this.sortBy(this.orderBy); // po zaktualizowaniu filteredPersons[] wywołujemy sortowanie w/g aktualnych kryteriów
-  }
 
+    const ob = this.orderBy;  // zapamiętujemy kolejność sortowania
+    this.orderBy = 'x';       // ustawiamy tymczasowo kolejność na pustą, żeby wymusić sortowanie
+    this.sortBy(ob); // po zaktualizowaniu filteredPersons[] wywołujemy sortowanie w/g aktualnych kryteriów
+
+  }
 
   // funkcja filtrująca - definicja filtra dla funkcji persons.filter[]
   filterArray(element, index, array) {
@@ -77,7 +86,6 @@ export class PhonebookComponent implements OnInit {
         .toLowerCase().indexOf(this.filter.toLowerCase().trim()) > - 1)
         );
   }
-
 
   // funkcja sortująca przefiltrowane dane
   sortBy(orderBy: string): void {
@@ -128,6 +136,13 @@ export class PhonebookComponent implements OnInit {
 
   private resetPage() {
     this.page = 1;
+    this.totalPages = Math.ceil(this.filteredPersons.length / 10);
+
+    this.paginator = [];      // czyścimy tablicę z numerami stron
+    for ( let i = 1 ; i <= this.totalPages; i++) {
+      this.paginator.push(i); // wypełniamy tablicę numerami stron
+    }
+    this.router.navigate(['phonebook', this.page]);
   }
 
 

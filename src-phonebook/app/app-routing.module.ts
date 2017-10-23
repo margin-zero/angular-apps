@@ -4,10 +4,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { PhonebookComponent }  from './phonebook.component';
 
 const routes: Routes = [
-    { path: '', redirectTo: '/phonebook', pathMatch: 'full' },
-    { path: 'phonebook',  component: PhonebookComponent },
+    { path: '', redirectTo: '/phonebook/1', pathMatch: 'full' },
+    { path: 'phonebook', redirectTo: '/phonebook/1', pathMatch: 'full' },
     { path: 'phonebook/:page', component: PhonebookComponent },
-    { path: '**', redirectTo: 'location-list', pathMatch: 'full' },
+    { path: '**', redirectTo: '/phonebook/1', pathMatch: 'full' },
   ];
 
   @NgModule({
