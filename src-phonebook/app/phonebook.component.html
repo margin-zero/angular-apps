@@ -1,88 +1,111 @@
 <section class="container-fluid">
-    <input  [(ngModel)]="filter" (dblclick)="filter='';filterData()" (ngModelChange)="filterData()" type="text" class="form-control" id="inputFilter" placeholder="szukaj... (dwuklik usuwa wprowadzony filtr)" tabindex="1" />
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th (click)="sortBy('name')" class="clickable">nazwisko</th>
-          <th (click)="sortBy('position')" class="clickable">stanowisko</th>
-          <th (click)="sortBy('department')" class="clickable">oddział</th>
-          <th (click)="sortBy('internal')" class="clickable">tel. wewn.</th>
-          <th (click)="sortBy('phone')" class="clickable">tel.</th>
-          <th (click)="sortBy('cellular')" class="clickable">cell.</th>
-          <th (click)="sortBy('email')" class="clickable">email</th>
-        </tr>
-      </thead>
-  
-      <tbody>
 
-        <ng-template ngFor  let-i="index" let-person [ngForOf]="filteredPersons">
-          <tr *ngIf="i>=((page-1)*10) && i<(page*10)">
-              <td>{{person.name}} {{person.surname}}</td>
-              <td (click)="filter=person.position;filterData()" class="clickable">{{person.position}}</td>
-              <td (click)="filter=person.department;filterData()" class="clickable">{{person.department}}</td>
-              <td (click)="filter=person.internal;filterData()" class="clickable">{{person.internal}}</td>
-              <td (click)="filter=person.phone;filterData()" class="clickable">{{person.phone}}</td>
-              <td (click)="filter=person.cellular;filterData()" class="clickable">{{person.cellular}}</td>
-              <td><a href='mailto:{{person.email}}'>{{person.email}}</a></td>
-          </tr>
-        </ng-template>
+        <div class="row">
+            <div class="col-sm-12">
+        
+                <div class="card text-red warning-card" id="warningCard">
+                    <div class="card-block">
+                    <h4 class="card-title">UWAGA!</h4>
+                    <p class="card-text text-danger">Dane w książce są generowane losowo na podstawie informacji statystycznych dot. imion w Polsce publikowanych
+                        przez <a href="https://www.gov.pl/cyfryzacja/statystyki-imion">Ministerstwo Cyfryzacji</a> oraz informacji dot. nazwisk w Polsce
+                        publikowanych przez <a href="http://www.gloswielkopolski.pl/artykul/668769,250-najpopularniejszych-nazwisk-w-polsce-jestes-w-tej-grupie-sprawdz-lista,id,t.html">Głos Wielkopolski</a>.
+                        Dane te nie są w żaden sposób powiązane z realnymi osobami - nie są danymi osobowymi.
+                    </p>
+                    <button class="btn btn-primary close-warning" (click)="closeWarning()">zamknij ten komunikat</button>
+                </div>
+            </div>
+        
+        </div>
+    </div>    
 
-      </tbody>
-    </table>
+    <div class="row">
+            <div class="col-sm-12">
 
+                <input  [(ngModel)]="filter" (dblclick)="filter='';filterData()" (ngModelChange)="filterData()" type="text" class="form-control" id="inputFilter" placeholder="szukaj... (dwuklik usuwa wprowadzony filtr)" tabindex="1" />
+                <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th (click)="sortBy('name')" class="clickable">nazwisko</th>
+                    <th (click)="sortBy('position')" class="clickable">stanowisko</th>
+                    <th (click)="sortBy('department')" class="clickable">oddział</th>
+                    <th (click)="sortBy('internal')" class="clickable">tel. wewn.</th>
+                    <th (click)="sortBy('phone')" class="clickable">tel.</th>
+                    <th (click)="sortBy('cellular')" class="clickable">cell.</th>
+                    <th (click)="sortBy('email')" class="clickable">email</th>
+                    </tr>
+                </thead>
+            
+                <tbody>
 
+                    <ng-template ngFor  let-i="index" let-person [ngForOf]="filteredPersons">
+                    <tr *ngIf="i>=((page-1)*10) && i<(page*10)">
+                        <td>{{person.name}} {{person.surname}}</td>
+                        <td (click)="filter=person.position;filterData()" class="clickable">{{person.position}}</td>
+                        <td (click)="filter=person.department;filterData()" class="clickable">{{person.department}}</td>
+                        <td (click)="filter=person.internal;filterData()" class="clickable">{{person.internal}}</td>
+                        <td (click)="filter=person.phone;filterData()" class="clickable">{{person.phone}}</td>
+                        <td (click)="filter=person.cellular;filterData()" class="clickable">{{person.cellular}}</td>
+                        <td><a href='mailto:{{person.email}}'>{{person.email}}</a></td>
+                    </tr>
+                    </ng-template>
 
+                </tbody>
+                </table>
 
-    <nav aria-label="strony">
-      <ul class="pagination justify-content-center">
-
-          <ng-template [ngIf]="page<2" [ngIfElse]="previousActive">
-              <li class="page-item disabled">
-                  <span class="page-link">&laquo;</span>
-              </li>
-          </ng-template>
-
-          <ng-template #previousActive>
-              <li class="page-item">
-                  <a class="page-link" routerLink='/phonebook/{{page-1}}' aria-label="Poprzednia">
-                      <span aria-hidden="true">&laquo;</span>
-                      <span class="sr-only">Poprzednia</span>
-                  </a>
-              </li>
-          </ng-template>
-
-
-          <ng-template ngFor let-i="index" let-p [ngForOf]="paginator">
-              <ng-template [ngIf]="p==page" [ngIfElse]="notActivePage">
-                  <li class="page-item active">
-                      <a class="page-link" routerLink='/phonebook/{{p}}'>{{p}}<span class="sr-only">(current)</span></a>
-                  </li>
-              </ng-template>
-
-              <ng-template #notActivePage>
-                  <li class="page-item"><a class="page-link" routerLink='/phonebook/{{p}}'>{{p}}</a></li>
-              </ng-template>
-          </ng-template>
+            </div>
+        </div>
 
 
-          
+        <div class="row">
+            <div class="col-sm-12">
 
-          <ng-template [ngIf]="page>totalPages-1" [ngIfElse]="nextActive">
-              <li class="page-item disabled">
-                  <span class="page-link">&raquo;</span>
-              </li>
-          </ng-template>
+                <nav aria-label="strony">
+                <ul class="pagination justify-content-center">
 
-          <ng-template #nextActive>
-              <li class="page-item">
-                  <a class="page-link" routerLink='/phonebook/{{1*page+1}}' aria-label="Następna">
-                      <span aria-hidden="true">&raquo;</span>
-                      <span class="sr-only">Następna</span>
-                  </a>
-              </li>
-          </ng-template>
+                    <ng-template [ngIf]="page<2" [ngIfElse]="previousActive">
+                        <li class="page-item disabled">
+                            <span class="page-link">&laquo;</span>
+                        </li>
+                    </ng-template>
 
-      </ul>
-    </nav>
+                    <ng-template #previousActive>
+                        <li class="page-item">
+                            <a class="page-link" routerLink='/phonebook/{{page-1}}' aria-label="Poprzednia">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Poprzednia</span>
+                            </a>
+                        </li>
+                    </ng-template>
 
+                    <ng-template ngFor let-i="index" let-p [ngForOf]="paginator">
+                        <ng-template [ngIf]="p==page" [ngIfElse]="notActivePage">
+                            <li class="page-item active">
+                                <a class="page-link" routerLink='/phonebook/{{p}}'>{{p}}<span class="sr-only">(current)</span></a>
+                            </li>
+                        </ng-template>
+
+                        <ng-template #notActivePage>
+                            <li class="page-item"><a class="page-link" routerLink='/phonebook/{{p}}'>{{p}}</a></li>
+                        </ng-template>
+                    </ng-template>
+
+                    <ng-template [ngIf]="page>totalPages-1" [ngIfElse]="nextActive">
+                        <li class="page-item disabled">
+                            <span class="page-link">&raquo;</span>
+                        </li>
+                    </ng-template>
+
+                    <ng-template #nextActive>
+                        <li class="page-item">
+                            <a class="page-link" routerLink='/phonebook/{{1*page+1}}' aria-label="Następna">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Następna</span>
+                            </a>
+                        </li>
+                    </ng-template>
+
+                </ul>
+                </nav>
+        </div>
+    </div>
 </section>

@@ -169,4 +169,8 @@ export class PhonebookComponent implements OnInit {
     return person1.email.localeCompare(person2.email);
   }
 
+
+  private closeWarning(): void {
+    document.getElementById('warningCard').style.display = 'none';
+  }
 }
