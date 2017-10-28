@@ -1,0 +1,12 @@
+<section class="container-fluid">
+
+    <div class="row">
+        <div *ngFor="let product of products" class="col-6 col-sm-4 col-md-3 col-lg-2">
+            <img [src]="product.previewFile" width="100%" /><br />
+            <p class="small">{{product.name}}</p>
+            <p class="text-right">{{product.priceNetto}} PLN</p>
+        </div>
+
+    </div>
+
+</section>
