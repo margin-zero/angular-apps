@@ -9,6 +9,7 @@ import { InMemoryDataService }  from './in-memory-data.service';
 
 import { AppComponent }       from './app.component';
 import { ProductCatalogComponent } from './product-catalog.component';
+import { ProductPreviewComponent } from './product-preview.component';
 
 // import { PhonebookComponent } from './phonebook.component';
 
@@ -21,7 +22,8 @@ import { AppRoutingModule }   from './app-routing.module';
 @NgModule({
   declarations: [
     AppComponent,
-    ProductCatalogComponent
+    ProductCatalogComponent,
+    ProductPreviewComponent
    // PhonebookComponent
   ],
   imports: [
