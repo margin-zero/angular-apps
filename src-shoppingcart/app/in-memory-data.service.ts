@@ -6,12 +6,12 @@ export class InMemoryDataService implements InMemoryDbService {
         const products: Product[] = [
             {
             id: 1, name: 'Kurtka KD-001 "Amanda"',
-            category: ['kurtki', 'damskie'], sizes: ['SM', 'M', 'L', 'XL', 'XXL'], colors: ['czarny', 'zielony', 'czerwony', 'turkus'],
+            category: ['kurtki', 'damskie'], sizes: ['S', 'M', 'L', 'XL', 'XXL'], colors: ['czarny', 'zielony', 'czerwony', 'turkus'],
             description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam laoreet ac dui a tincidunt. 
             Duis feugiat tellus orci, a cursus nisl suscipit bibendum. Ut ornare nibh quis neque consectetur imperdiet. 
             Phasellus mattis tortor enim, ac volutpat quam molestie et. In hac habitasse platea dictumst. Nunc sem mi, 
             dignissim tempor efficitur non, porta id lacus.`,
-            priceNetto: 120, vat: 23, priceBrutto: 147.60,
+            priceNetto: 120.99, vat: 23, priceBrutto: 147.60,
             previewFile: 'assets/images/kurtka01.jpg'
             },
 

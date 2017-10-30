@@ -18,6 +18,8 @@ export class ProductPreviewComponent implements OnInit {
     private sub: any;
     private productId: number;
 
+    private itemCount = 1;
+
     constructor(
         private productService: ProductService,
         private router: Router,
