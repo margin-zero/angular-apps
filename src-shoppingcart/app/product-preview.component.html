@@ -1,4 +1,4 @@
-<section class="container-fluid">
+<section *ngIf="product" class="container-fluid">
     <div class="row">
         <div class="col-sm-5 col-md-5 col-lg-4">
             <img [src]="product.previewFile" style="width: 100%">            
@@ -7,7 +7,7 @@
         <div class="col-sm-7 col-md-7 col-lg-8">
             <div class="row">
                 <div class="col-12">
-                    <h4>{{product.name}}</h4>
+                    <h4>{{shoppingcartItem.name}}</h4>
                     <p>{{product.description}}</p>
                 </div>
             </div>
@@ -16,8 +16,8 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label for="inputSizeSelect">rozmiar: </label><label class="required"> ( wymagane )</label>
-                        <select [(ngModel)]="size" class="form-control" id="inputSizeSelect" tabindex="2" required>
-                            <option *ngFor="let rozmiar of product.sizes" value={{rozmiar}}>{{rozmiar}}</option>
+                        <select [(ngModel)]="shoppingcartItem.size" class="form-control" id="inputSizeSelect" tabindex="2" required>
+                            <option *ngFor="let rozmiar of product.sizes" value="{{rozmiar}}">{{rozmiar}}</option>
                         </select>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label for="inputColorSelect">kolor: </label><label class="required"> ( wymagane )</label>
-                        <select [(ngModel)]="color" class="form-control" id="inputColorSelect" tabindex="3" required>
+                        <select [(ngModel)]="shoppingcartItem.color" class="form-control" id="inputColorSelect" tabindex="3" required>
                             <option *ngFor="let color of product.colors" value={{color}}>{{color}}</option>
                         </select>
                     </div>
@@ -36,8 +36,8 @@
             <div class="row">
                 <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="inputCountSelect">ilość: </label><label class="required"> ( wymagane )</label>
-                            <select [(ngModel)]="itemCount" class="form-control" id="inputCountSelect" tabindex="4" required>
+                            <label for="inputCountSelect">ilość: </label>
+                            <select [(ngModel)]="shoppingcartItem.itemCount" class="form-control" id="inputCountSelect" tabindex="4" required>
                                 <option value="1" selected>1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -52,17 +52,18 @@
                         </div>
                 </div>
 
-                <div class="col-sm-6 item-price">
-                    cena: <span class="preview-price">{{(product.priceBrutto).toFixed(2)}} PLN</span>
+                <div class="col-sm-6">
+                    <div class="item-price">
+                        <label>cena: </label><label class="required"> ( brutto )</label>
+                        <p class="preview-price">{{(shoppingcartItem.itemPrice).toFixed(2)}} PLN</p>
+                    </div>
                 </div>
                 <div class="col-12 item-value">
-                    wartość: (brutto) <span class="preview-value">{{(itemCount * product.priceBrutto).toFixed(2)}} PLN</span>
-                    
-
+                    wartość: (brutto) <span class="preview-value">{{(shoppingcartItem.itemCount * shoppingcartItem.itemPrice).toFixed(2)}} PLN</span>
                 </div>
-                <div>
-                    <button class="btn btn-primary">dodaj do koszyka</button>
-                    <button class="btn btn-danger">anuluj</button>
+                <div class="col-12 button-group">
+                    <button class="btn btn-danger" (click)="goBack()" tabindex="6">anuluj</button>
+                    <button class="btn btn-primary" (click)="addToShoppingcart()" tabindex="5">dodaj do koszyka</button>
                 </div>
             </div>
         </div>
