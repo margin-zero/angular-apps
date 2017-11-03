@@ -6,4 +6,5 @@ export class ShoppingcartItem {
     itemValue: number;
     itemPrice: number;
     itemCount: number;
+    previewFile: string;
 }

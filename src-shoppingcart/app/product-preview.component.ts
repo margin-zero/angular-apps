@@ -7,6 +7,8 @@ import { ProductService }   from './product.service';
 
 import { ShoppingcartItem } from './shoppingcart-item';
 
+import { ShoppingcartService } from './shoppingcart.service';
+
 
 @Component({
     selector: 'product-preview',
@@ -26,7 +28,8 @@ export class ProductPreviewComponent implements OnInit {
         private productService: ProductService,
         private router: Router,
         private route: ActivatedRoute,
-        private location: Location
+        private location: Location,
+        private shoppingcartService: ShoppingcartService
     ) {}
 
 
@@ -45,6 +48,7 @@ export class ProductPreviewComponent implements OnInit {
         this.shoppingcartItem.name = this.product.name;                 // przepisz nazwę produktu do dodawanej pozycji koszyka
         this.shoppingcartItem.itemCount = 1;
         this.shoppingcartItem.itemPrice = this.product.priceBrutto;
+        this.shoppingcartItem.previewFile = this.product.previewFile;
     }
 
     addToShoppingcart(): void {
@@ -64,6 +68,9 @@ export class ProductPreviewComponent implements OnInit {
                 !this.shoppingcartItem.itemCount
             ) {
                 alert('brakuje danych !!!');
+            } else {
+                this.shoppingcartService.putItem(this.shoppingcartItem);
+                this.location.back();
             }
     }
 

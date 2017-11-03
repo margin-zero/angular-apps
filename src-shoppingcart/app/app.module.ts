@@ -10,10 +10,13 @@ import { InMemoryDataService }  from './in-memory-data.service';
 import { AppComponent }       from './app.component';
 import { ProductCatalogComponent } from './product-catalog.component';
 import { ProductPreviewComponent } from './product-preview.component';
+import { ShoppingcartComponent } from './shoppingcart.component';
+
 
 // import { PhonebookComponent } from './phonebook.component';
 
 import { ProductService }      from './product.service';
+import { ShoppingcartService } from './shoppingcart.service';
 
 // import { PersonGenerator }    from './person-generator';
 
@@ -23,7 +26,8 @@ import { AppRoutingModule }   from './app-routing.module';
   declarations: [
     AppComponent,
     ProductCatalogComponent,
-    ProductPreviewComponent
+    ProductPreviewComponent,
+    ShoppingcartComponent
    // PhonebookComponent
   ],
   imports: [
@@ -33,7 +37,7 @@ import { AppRoutingModule }   from './app-routing.module';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [ ProductService ],
+  providers: [ ProductService, ShoppingcartService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

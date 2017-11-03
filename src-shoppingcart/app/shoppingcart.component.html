@@ -1,0 +1,5 @@
+<section>
+    <ul *ngIf="shoppingcartService.items.length>0">
+        <li *ngFor="let item of shoppingcartService.items">{{item.name}}</li>
+    </ul>    
+</section>
