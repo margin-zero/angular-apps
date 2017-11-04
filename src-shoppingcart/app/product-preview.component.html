@@ -58,12 +58,18 @@
                         <p class="preview-price">{{(shoppingcartItem.itemPrice).toFixed(2)}} PLN</p>
                     </div>
                 </div>
+            </div>
+
+            <div class="row">
                 <div class="col-12 item-value">
                     wartość: (brutto) <span class="preview-value">{{(shoppingcartItem.itemCount * shoppingcartItem.itemPrice).toFixed(2)}} PLN</span>
                 </div>
+            </div>
+
+            <div class="row">
                 <div class="col-12 button-group">
-                    <button class="btn btn-danger" (click)="goBack()" tabindex="6">anuluj</button>
-                    <button class="btn btn-primary" (click)="addToShoppingcart()" tabindex="5">dodaj do koszyka</button>
+                    <button class="btn btn-danger btn-sm" (click)="goBack()" tabindex="6">anuluj</button>
+                    <button class="btn btn-primary btn-sm" (click)="addToShoppingcart()" tabindex="5">dodaj do koszyka</button>
                 </div>
             </div>
         </div>

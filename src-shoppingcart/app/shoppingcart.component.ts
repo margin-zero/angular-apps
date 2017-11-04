@@ -23,6 +23,12 @@ export class ShoppingcartComponent {
         private location: Location
     ) {}
 
+    goBack(): void {
+        this.location.back();
+    }
 
+    orderProducts(): void {
+        alert('składamy zamówienie');
+    }
 
 }

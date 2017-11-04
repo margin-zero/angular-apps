@@ -1,5 +1,41 @@
-<section>
-    <ul *ngIf="shoppingcartService.items.length>0">
-        <li *ngFor="let item of shoppingcartService.items">{{item.name}}</li>
-    </ul>    
+<section *ngIf="shoppingcartService.items.length>0" class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <table class="shoppingcart-table table table-sm table-striped">
+                        
+                <thead class="thead-inverse">
+                    <tr>
+                        <th>produkt</th>
+                        <th>rozmiar</th>
+                        <th>kolor</th>
+                        <th>ilość</th>
+                        <th>cena</th>
+                        <th>wartość</th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                                   
+                <tbody>
+                    <tr *ngFor="let item of shoppingcartService.items">
+                        <td>{{item.name}}</td>
+                        <td>{{item.size}}</td>
+                        <td>{{item.color}}</td>
+                        <td>{{item.itemCount}}</td>
+                        <td>{{item.itemPrice}}</td>
+                        <td>{{item.itemValue}}</td>
+                        <td>zmień</td>
+                        <td>usuń</td>
+                    </tr>
+                </tbody>
+            </table>    
+        </div>
+    </div>
+
+    <div class="row">
+            <div class="col-12 button-group">
+                <button class="btn btn-danger btn-sm" (click)="goBack()" tabindex="6">powrót</button>
+                <button class="btn btn-primary btn-sm" (click)="orderProducts()" tabindex="5">przejdź do zamówienia</button>
+            </div>
+    </div>
 </section>
