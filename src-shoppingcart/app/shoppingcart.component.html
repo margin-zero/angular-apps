@@ -1,4 +1,14 @@
+<section *ngIf="shoppingcartService.items.length==0" class="container-fluid">
+        <div class="row">
+                <div class="col-12"><h5>Twój koszyk jest pusty...</h5></div>
+        </div>
+</section>
+
 <section *ngIf="shoppingcartService.items.length>0" class="container-fluid">
+    <div class="row">
+        <div class="col-12"><h5>Zawartość twojego koszyka:</h5></div>
+    </div>
+        
     <div class="row">
         <div class="col-12">
             <table class="shoppingcart-table table table-sm table-striped">
