@@ -1,5 +1,5 @@
 
-<section class="container-fluid">
+<section>
 
     <div class="row">
         <div *ngFor="let product of products" class="col-6 col-sm-4 col-md-3 col-lg-2">
@@ -8,8 +8,6 @@
             <p class="small">{{product.name}}</p>
             <p class="text-right">{{product.priceNetto}} PLN</p>
         </div>
-
     </div>
-    <a routerLink='/shoppingcart' style="padding-bottom: 40px;">koszyk</a>
 
 </section>

@@ -1,10 +1,14 @@
-<section *ngIf="shoppingcartService.items.length==0" class="container-fluid">
-        <div class="row">
-                <div class="col-12"><h5>Twój koszyk jest pusty...</h5></div>
+<section *ngIf="shoppingcartService.items.length==0">
+    <div class="row">
+        <div class="col-12">
+            <h5>Twój koszyk jest pusty...</h5>
+            <button class="btn btn-danger btn-sm" (click)="goBack()" tabindex="6">powrót</button>
         </div>
+        
+    </div>
 </section>
 
-<section *ngIf="shoppingcartService.items.length>0" class="container-fluid">
+<section *ngIf="shoppingcartService.items.length>0">
     <div class="row">
         <div class="col-12"><h5>Zawartość twojego koszyka:</h5></div>
     </div>
@@ -27,7 +31,7 @@
                 </thead>
                                    
                 <tbody>
-                    <tr *ngFor="let item of shoppingcartService.items">
+                    <tr *ngFor="let item of shoppingcartService.items; let i = index">
                         <td>{{item.name}}</td>
                         <td>{{item.size}}</td>
                         <td>{{item.color}}</td>
@@ -35,7 +39,9 @@
                         <td>{{item.itemPrice}}</td>
                         <td>{{item.itemValue}}</td>
                         <td>zmień</td>
-                        <td>usuń</td>
+                        <td>
+                            <a href="#" (click)="$event.preventDefault();shoppingcartService.deleteItem(i)">usuń</a>
+                        </td>
                     </tr>
                 </tbody>
             </table>    

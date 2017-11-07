@@ -53,13 +53,6 @@ export class ProductPreviewComponent implements OnInit {
 
     addToShoppingcart(): void {
         this.shoppingcartItem.itemValue = this.shoppingcartItem.itemPrice * this.shoppingcartItem.itemCount;
-        alert('dodaj do koszyka: produktId = ' + this.shoppingcartItem.productId +
-        '   name = ' + this.shoppingcartItem.name +
-        '   size = ' + this.shoppingcartItem.size +
-        '   color = ' + this.shoppingcartItem.color +
-        '   cena = ' + this.shoppingcartItem.itemPrice +
-        '   ilość = ' + this.shoppingcartItem.itemCount +
-        '   wartość = ' + this.shoppingcartItem.itemValue);
 
         if (    !this.shoppingcartItem.productId ||
                 !this.shoppingcartItem.size ||
@@ -67,7 +60,7 @@ export class ProductPreviewComponent implements OnInit {
                 !this.shoppingcartItem.itemPrice ||
                 !this.shoppingcartItem.itemCount
             ) {
-                alert('brakuje danych !!!');
+                alert('Podaj wszystkie informacje...');
             } else {
                 this.shoppingcartService.putItem(this.shoppingcartItem);
                 this.location.back();

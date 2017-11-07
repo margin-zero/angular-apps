@@ -1,20 +1,19 @@
-<section>
-  <h5>{{title}}</h5>
-</section>
-
 <section class="container">
+
     <div class="row">
-        <div class="col-12">top menu bar</div>
+        <div class="col-12"><h5>{{title}}</h5></div>
     </div>
 
     <div class="row">
-        <div class="col-1">menu boczne</div>
-        <div class="col-11">
+        <div class="col-12">
+            <a routerLink='/shoppingcart' class="shoppingcart-link">koszyk ({{shoppingcartService.itemCount()}})</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
             <router-outlet></router-outlet>
         </div>
     </div>
 
 </section>
-
-
-
