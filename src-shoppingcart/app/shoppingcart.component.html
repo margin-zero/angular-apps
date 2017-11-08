@@ -38,7 +38,9 @@
                         <td>{{item.itemCount}}</td>
                         <td>{{item.itemPrice}}</td>
                         <td>{{item.itemValue}}</td>
-                        <td>zmień</td>
+                        <td>
+                            <a routerLink='/product/{{item.productId}}/{{i}}'>zmień</a>
+                        </td>
                         <td>
                             <a href="#" (click)="$event.preventDefault();shoppingcartService.deleteItem(i)">usuń</a>
                         </td>

@@ -21,6 +21,7 @@ export class ProductPreviewComponent implements OnInit {
     private product: Product;
     private sub: any;
     private productId: number;
+    private cartId: number;
 
     private shoppingcartItem = new ShoppingcartItem;
 
@@ -36,11 +37,16 @@ export class ProductPreviewComponent implements OnInit {
     ngOnInit(): void {
         this.sub = this.route.params.subscribe((params) => {  // subskrybujemy parametry z routera
             this.shoppingcartItem.productId = params['id'];
+            this.cartId = params['cartId'];
         });
+
 
         this.productService
           .getProduct(this.shoppingcartItem.productId)              // pobierz produkt z bazy danych...
-          .then(product => this.setProduct(product));               // ...a potem wywołaj setProduct
+          .then(
+              product => this.setProduct(product),          // ... a potem wywołaj setProduct - jeśli sukces
+              msg => this.location.back() );                // ... albo przekieruj na poprzednią stronę - jeśli błąd
+
     }
 
     setProduct(product): void {
@@ -49,6 +55,12 @@ export class ProductPreviewComponent implements OnInit {
         this.shoppingcartItem.itemCount = 1;
         this.shoppingcartItem.itemPrice = this.product.priceBrutto;
         this.shoppingcartItem.previewFile = this.product.previewFile;
+
+        if (this.cartId) {
+            this.shoppingcartItem.itemCount = this.shoppingcartService.getItems()[this.cartId].itemCount;
+            this.shoppingcartItem.color = this.shoppingcartService.getItems()[this.cartId].color;
+            this.shoppingcartItem.size = this.shoppingcartService.getItems()[this.cartId].size;
+        }
     }
 
     addToShoppingcart(): void {

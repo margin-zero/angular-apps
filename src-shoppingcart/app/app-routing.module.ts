@@ -9,6 +9,7 @@ const routes: Routes = [
     { path: '', redirectTo: '/catalog', pathMatch: 'full' },
     { path: 'catalog', component: ProductCatalogComponent },
     { path: 'product/:id', component: ProductPreviewComponent },
+    { path: 'product/:id/:cartId', component: ProductPreviewComponent },
     { path: 'shoppingcart', component: ShoppingcartComponent },
     { path: '**', redirectTo: '/catalog', pathMatch: 'full' },
   ];
