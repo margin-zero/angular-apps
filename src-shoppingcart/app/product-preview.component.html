@@ -1,6 +1,11 @@
 <section *ngIf="product">
     <div class="row">
-        <div class="col-12"><h5>Dodaj produkt do koszyka:</h5></div>
+        <div class="col-12">
+            <h5 *ngIf="cartId >= 0; else add_product_header">Edytuj pozycję z koszyka:</h5>
+            <ng-template #add_product_header>
+                <h5>Dodaj produkt do koszyka:</h5>
+            </ng-template>
+        </div>
     </div>
 
     <div class="row">
@@ -77,7 +82,11 @@
             <div class="row">
                 <div class="col-12 button-group">
                     <button class="btn btn-danger btn-sm" (click)="goBack()" tabindex="6">anuluj</button>
-                    <button class="btn btn-primary btn-sm" (click)="addToShoppingcart()" tabindex="5">dodaj do koszyka</button>
+                    <button *ngIf="cartId >= 0; else button_add_new_product" class="btn btn-primary btn-sm" (click)="updateShoppingcart(cartId)" tabindex="5">zapisz zmiany</button>
+                    
+                    <ng-template #button_add_new_product>
+                        <button class="btn btn-primary btn-sm" (click)="addToShoppingcart()" tabindex="5">dodaj do koszyka</button>
+                    </ng-template>
                 </div>
             </div>
 

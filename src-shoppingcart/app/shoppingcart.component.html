@@ -19,12 +19,12 @@
                         
                 <thead class="thead-inverse">
                     <tr>
-                        <th>produkt</th>
-                        <th>rozmiar</th>
-                        <th>kolor</th>
-                        <th>ilość</th>
-                        <th>cena</th>
-                        <th>wartość</th>
+                        <th class="product-name">produkt</th>
+                        <th class="product-size">rozmiar</th>
+                        <th class="product-color">kolor</th>
+                        <th class="product-count">ilość</th>
+                        <th class="product-price">cena</th>
+                        <th class="product-value">wartość</th>
                         <th>&nbsp;</th>
                         <th>&nbsp;</th>
                     </tr>
@@ -32,18 +32,23 @@
                                    
                 <tbody>
                     <tr *ngFor="let item of shoppingcartService.items; let i = index">
-                        <td>{{item.name}}</td>
-                        <td>{{item.size}}</td>
-                        <td>{{item.color}}</td>
-                        <td>{{item.itemCount}}</td>
-                        <td>{{item.itemPrice}}</td>
-                        <td>{{item.itemValue}}</td>
-                        <td>
+                        <td class="product-name">{{item.name}}</td>
+                        <td class="product-size">{{item.size}}</td>
+                        <td class="product-color">{{item.color}}</td>
+                        <td class="product-count">{{item.itemCount}}</td>
+                        <td class="product-price">{{item.itemPrice.toFixed(2)}}</td>
+                        <td class="product-value">{{item.itemValue.toFixed(2)}}</td>
+                        <td class="product-operation">
                             <a routerLink='/product/{{item.productId}}/{{i}}'>zmień</a>
                         </td>
-                        <td>
+                        <td class="product-operation">
                             <a href="#" (click)="$event.preventDefault();shoppingcartService.deleteItem(i)">usuń</a>
                         </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="5" class="total-label">RAZEM:</td>
+                        <td class="total-value">{{shoppingcartService.totalValue().toFixed(2)}}</td>
                     </tr>
                 </tbody>
             </table>    

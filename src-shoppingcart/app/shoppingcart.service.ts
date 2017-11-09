@@ -22,6 +22,11 @@ export class ShoppingcartService {
         }
     }
 
+    updateItem(item: ShoppingcartItem, cartId: number): void {
+        this.items[cartId] = item;
+        alert('pozycja koszyka została zaktualizowana');
+    }
+
     deleteItem(index): void {
         this.items.splice(index, 1);
     }
@@ -33,5 +38,9 @@ export class ShoppingcartService {
 
     itemCount(): number {
         return this.items.length;
+    }
+
+    totalValue(): number {
+        return this.items.reduce((a , b) => a +  b.itemValue, 0);
     }
 }

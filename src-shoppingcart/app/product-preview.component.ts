@@ -35,11 +35,14 @@ export class ProductPreviewComponent implements OnInit {
 
 
     ngOnInit(): void {
-        this.sub = this.route.params.subscribe((params) => {  // subskrybujemy parametry z routera
-            this.shoppingcartItem.productId = params['id'];
-            this.cartId = params['cartId'];
-        });
 
+        // odczytujemy wartości parametrów z routera
+        this.shoppingcartItem.productId = parseInt(this.route.snapshot.paramMap.get('id'), 10);
+        this.cartId = parseInt(this.route.snapshot.paramMap.get('cartId'), 10);
+
+        if ((this.cartId >= 0) && (!this.shoppingcartService.items[this.cartId])) { // jeśli nie ma wskazanej pozycji w koszyku
+            this.router.navigate(['/catalog']);                                     // to przechodzimy do katalogu
+        }
 
         this.productService
           .getProduct(this.shoppingcartItem.productId)              // pobierz produkt z bazy danych...
@@ -56,7 +59,7 @@ export class ProductPreviewComponent implements OnInit {
         this.shoppingcartItem.itemPrice = this.product.priceBrutto;
         this.shoppingcartItem.previewFile = this.product.previewFile;
 
-        if (this.cartId) {
+        if (this.cartId >= 0) {
             this.shoppingcartItem.itemCount = this.shoppingcartService.getItems()[this.cartId].itemCount;
             this.shoppingcartItem.color = this.shoppingcartService.getItems()[this.cartId].color;
             this.shoppingcartItem.size = this.shoppingcartService.getItems()[this.cartId].size;
@@ -78,6 +81,14 @@ export class ProductPreviewComponent implements OnInit {
                 this.location.back();
             }
     }
+
+
+    updateShoppingcart(cartId): void {
+        this.shoppingcartItem.itemValue = this.shoppingcartItem.itemPrice * this.shoppingcartItem.itemCount;
+        this.shoppingcartService.updateItem(this.shoppingcartItem, cartId);
+        this.location.back();
+    }
+
 
     goBack(): void {
         this.location.back();
