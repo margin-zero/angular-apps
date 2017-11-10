@@ -13,7 +13,7 @@ import { ShoppingcartService } from './shoppingcart.service';
 @Component({
     selector: 'shoppingcart',
     templateUrl: './shoppingcart.component.html',
-    styleUrls: []
+    styleUrls: ['./shoppingcart.component.css']
 })
 
 export class ShoppingcartComponent {

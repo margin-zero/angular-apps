@@ -11,7 +11,7 @@ export class InMemoryDataService implements InMemoryDbService {
             Duis feugiat tellus orci, a cursus nisl suscipit bibendum. Ut ornare nibh quis neque consectetur imperdiet. 
             Phasellus mattis tortor enim, ac volutpat quam molestie et. In hac habitasse platea dictumst. Nunc sem mi, 
             dignissim tempor efficitur non, porta id lacus.`,
-            priceNetto: 120.99, vat: 23, priceBrutto: 147.60,
+            priceNetto: 121.95, vat: 23, priceBrutto: 150,
             previewFile: 'assets/images/kurtka01.jpg'
             },
 
@@ -22,7 +22,7 @@ export class InMemoryDataService implements InMemoryDbService {
             Duis feugiat tellus orci, a cursus nisl suscipit bibendum. Ut ornare nibh quis neque consectetur imperdiet. 
             Phasellus mattis tortor enim, ac volutpat quam molestie et. In hac habitasse platea dictumst. Nunc sem mi, 
             dignissim tempor efficitur non, porta id lacus.`,
-            priceNetto: 120, vat: 23, priceBrutto: 147.60,
+            priceNetto: 162.6, vat: 23, priceBrutto: 200,
             previewFile: 'assets/images/kurtka02.jpg'
             },
 
@@ -33,7 +33,7 @@ export class InMemoryDataService implements InMemoryDbService {
             Duis feugiat tellus orci, a cursus nisl suscipit bibendum. Ut ornare nibh quis neque consectetur imperdiet. 
             Phasellus mattis tortor enim, ac volutpat quam molestie et. In hac habitasse platea dictumst. Nunc sem mi, 
             dignissim tempor efficitur non, porta id lacus.`,
-            priceNetto: 120, vat: 23, priceBrutto: 147.60,
+            priceNetto: 143.08, vat: 23, priceBrutto: 176,
             previewFile: 'assets/images/kurtka03.jpg'
             },
 
@@ -44,7 +44,7 @@ export class InMemoryDataService implements InMemoryDbService {
             Duis feugiat tellus orci, a cursus nisl suscipit bibendum. Ut ornare nibh quis neque consectetur imperdiet. 
             Phasellus mattis tortor enim, ac volutpat quam molestie et. In hac habitasse platea dictumst. Nunc sem mi, 
             dignissim tempor efficitur non, porta id lacus.`,
-            priceNetto: 120, vat: 23, priceBrutto: 147.60,
+            priceNetto: 179.67, vat: 23, priceBrutto: 221,
             previewFile: 'assets/images/sweter01.jpg'
             },
 
@@ -55,7 +55,7 @@ export class InMemoryDataService implements InMemoryDbService {
             Duis feugiat tellus orci, a cursus nisl suscipit bibendum. Ut ornare nibh quis neque consectetur imperdiet. 
             Phasellus mattis tortor enim, ac volutpat quam molestie et. In hac habitasse platea dictumst. Nunc sem mi, 
             dignissim tempor efficitur non, porta id lacus.`,
-            priceNetto: 120, vat: 23, priceBrutto: 147.60,
+            priceNetto: 125.2, vat: 23, priceBrutto: 154,
             previewFile: 'assets/images/kurtka04.jpg'
             },
 
@@ -66,7 +66,7 @@ export class InMemoryDataService implements InMemoryDbService {
             Duis feugiat tellus orci, a cursus nisl suscipit bibendum. Ut ornare nibh quis neque consectetur imperdiet. 
             Phasellus mattis tortor enim, ac volutpat quam molestie et. In hac habitasse platea dictumst. Nunc sem mi, 
             dignissim tempor efficitur non, porta id lacus.`,
-            priceNetto: 120, vat: 23, priceBrutto: 147.60,
+            priceNetto: 147.96, vat: 23, priceBrutto: 182,
             previewFile: 'assets/images/legginsy01.jpg'
             },
 
@@ -77,7 +77,7 @@ export class InMemoryDataService implements InMemoryDbService {
             Duis feugiat tellus orci, a cursus nisl suscipit bibendum. Ut ornare nibh quis neque consectetur imperdiet. 
             Phasellus mattis tortor enim, ac volutpat quam molestie et. In hac habitasse platea dictumst. Nunc sem mi, 
             dignissim tempor efficitur non, porta id lacus.`,
-            priceNetto: 120, vat: 23, priceBrutto: 147.60,
+            priceNetto: 154.47, vat: 23, priceBrutto: 190,
             previewFile: 'assets/images/spodnica01.jpg'
             },
 
@@ -88,7 +88,7 @@ export class InMemoryDataService implements InMemoryDbService {
             Duis feugiat tellus orci, a cursus nisl suscipit bibendum. Ut ornare nibh quis neque consectetur imperdiet. 
             Phasellus mattis tortor enim, ac volutpat quam molestie et. In hac habitasse platea dictumst. Nunc sem mi, 
             dignissim tempor efficitur non, porta id lacus.`,
-            priceNetto: 120, vat: 23, priceBrutto: 147.60,
+            priceNetto: 79.67, vat: 23, priceBrutto: 98,
             previewFile: 'assets/images/spodnie01.jpg'
             },
 
@@ -99,7 +99,7 @@ export class InMemoryDataService implements InMemoryDbService {
             Duis feugiat tellus orci, a cursus nisl suscipit bibendum. Ut ornare nibh quis neque consectetur imperdiet. 
             Phasellus mattis tortor enim, ac volutpat quam molestie et. In hac habitasse platea dictumst. Nunc sem mi, 
             dignissim tempor efficitur non, porta id lacus.`,
-            priceNetto: 120, vat: 23, priceBrutto: 147.60,
+            priceNetto: 100, vat: 23, priceBrutto: 123,
             previewFile: 'assets/images/spodnie02.jpg'
             },
 
@@ -111,7 +111,7 @@ export class InMemoryDataService implements InMemoryDbService {
             Duis feugiat tellus orci, a cursus nisl suscipit bibendum. Ut ornare nibh quis neque consectetur imperdiet. 
             Phasellus mattis tortor enim, ac volutpat quam molestie et. In hac habitasse platea dictumst. Nunc sem mi, 
             dignissim tempor efficitur non, porta id lacus.`,
-            priceNetto: 120, vat: 23, priceBrutto: 147.60,
+            priceNetto: 134.95, vat: 23, priceBrutto: 166,
             previewFile: 'assets/images/spodnie03.jpg'
             },
 
@@ -122,7 +122,7 @@ export class InMemoryDataService implements InMemoryDbService {
             Duis feugiat tellus orci, a cursus nisl suscipit bibendum. Ut ornare nibh quis neque consectetur imperdiet. 
             Phasellus mattis tortor enim, ac volutpat quam molestie et. In hac habitasse platea dictumst. Nunc sem mi, 
             dignissim tempor efficitur non, porta id lacus.`,
-            priceNetto: 120, vat: 23, priceBrutto: 147.60,
+            priceNetto: 106.5, vat: 23, priceBrutto: 131,
             previewFile: 'assets/images/sweter02.jpg'
             },
 
@@ -133,7 +133,7 @@ export class InMemoryDataService implements InMemoryDbService {
             Duis feugiat tellus orci, a cursus nisl suscipit bibendum. Ut ornare nibh quis neque consectetur imperdiet. 
             Phasellus mattis tortor enim, ac volutpat quam molestie et. In hac habitasse platea dictumst. Nunc sem mi, 
             dignissim tempor efficitur non, porta id lacus.`,
-            priceNetto: 120, vat: 23, priceBrutto: 147.60,
+            priceNetto: 82.92, vat: 23, priceBrutto: 102,
             previewFile: 'assets/images/sweter03.jpg'
             },
         ];

@@ -13,7 +13,7 @@ import { ShoppingcartService } from './shoppingcart.service';
 @Component({
     selector: 'product-preview',
     templateUrl: './product-preview.component.html',
-    styleUrls: []
+    styleUrls: ['./product-preview.component.css']
 })
 
 export class ProductPreviewComponent implements OnInit {

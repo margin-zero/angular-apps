@@ -6,7 +6,7 @@
             <a routerLink='/product/{{product.id}}'>
             <img [src]="product.previewFile" width="100%" /></a><br />
             <p class="small">{{product.name}}</p>
-            <p class="text-right">{{product.priceNetto}} PLN</p>
+            <p class="text-right">{{product.priceBrutto.toFixed(2)}} PLN</p>
         </div>
     </div>
 
