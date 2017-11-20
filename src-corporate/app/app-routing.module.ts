@@ -12,8 +12,6 @@ import { CountryAddComponent }      from './country-add.component';
 import { CountryEditComponent }     from './country-edit.component';
 import { LocationListComponent }      from './location-list.component';
 
-
-
 const routes: Routes = [
     { path: '', redirectTo: '/corporation-list', pathMatch: 'full' },
     { path: 'corporation-list',  component: CorporationListComponent },

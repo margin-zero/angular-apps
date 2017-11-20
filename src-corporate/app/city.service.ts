@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable }    from '@angular/core';
 import { Headers, Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
@@ -16,32 +16,31 @@ export class CityService {
 
     getCities(): Promise<City[]> {
 
-           return this.http.get(this.citiesUrl)
-           .toPromise()
-           .then(response => response.json() as City[])
-           .catch(this.handleError);
-
+        return this.http.get(this.citiesUrl)
+        .toPromise()
+        .then(response => response.json() as City[])
+        .catch(this.handleError);
     }
 
     getCity(id: number): Promise<City> {
         const url = `${this.citiesUrl}/${id}`;
         return this.http.get(url)
-          .toPromise()
-          .then(response => response.json() as City)
-          .catch(this.handleError);
+        .toPromise()
+        .then(response => response.json() as City)
+        .catch(this.handleError);
     }
 
     private handleError(error: any): Promise<any> {
         console.error('UWAGA !!! An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
-      }
+    }
 
     delete(id: number): Promise<void> {
         const url = `${this.citiesUrl}/${id}`;
         return this.http.delete(url, {headers: this.headers})
-          .toPromise()
-          .then(() => null)
-          .catch(this.handleError);
+        .toPromise()
+        .then(() => null)
+        .catch(this.handleError);
     }
 
     create(cityName: string, countryId: number): Promise<City> {
@@ -52,13 +51,12 @@ export class CityService {
         .catch(this.handleError);
     }
 
-
     update(city: City): Promise<City> {
         const url = `${this.citiesUrl}/${city.id}`;
         return this.http
-          .put(url, JSON.stringify(city), {headers: this.headers})
-          .toPromise()
-          .then(() => city)
-          .catch(this.handleError);
-      }
+        .put(url, JSON.stringify(city), {headers: this.headers})
+        .toPromise()
+        .then(() => city)
+        .catch(this.handleError);
+    }
 }

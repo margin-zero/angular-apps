@@ -1,13 +1,13 @@
 import 'rxjs/add/operator/switchMap';
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit }                from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { Location }                 from '@angular/common';
+import { Location }                         from '@angular/common';
 
-import { City } from './city';
+import { City }        from './city';
 import { Corporation } from './corporation';
 
-import { CityService } from './city.service';
+import { CityService }        from './city.service';
 import { CorporationService } from './corporation.service';
 
 

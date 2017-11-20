@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router }            from '@angular/router';
 
 import { Corporation } from './corporation';
-import { City } from './city';
-import { Country } from './country';
+import { City }        from './city';
+import { Country }     from './country';
 
 import { CorporationService } from './corporation.service';
-import { CityService } from './city.service';
-import { CountryService } from './country.service';
+import { CityService }        from './city.service';
+import { CountryService }     from './country.service';
 
 
 @Component({

@@ -1,29 +1,28 @@
 <section class="container-fluid">
     <table class="table table-hover">
-      <thead>
-        <tr>
-            <th>państwo</th>
-            <th>miasta</th>
-        </tr>
+        <thead>
+            <tr>
+                <th>państwo</th>
+                <th>miasta</th>
+            </tr>
         </thead>
 
         <tbody>
-        <tr *ngFor="let country of countries">
-            <td>
-                <a routerLink="/country-edit/{{country.id}}">{{country.name}}</a>
-                <span class="button-delete" title="usuń państwo: {{country.name}}" *ngIf="countryHasCities(country.id)===false" (click)="deleteCountry(country); $event.stopPropagation()">&times;</span>
-            </td>
-            <td>
-                <ng-template ngFor let-city [ngForOf]="cities">
-                    <span class="city-link" *ngIf="city.country_id == country.id">
-                        <a routerLink="/city-edit/{{city.id}}">{{city.name}}</a>&nbsp;<span class="button-delete" title="usuń miasto: {{city.name}}" *ngIf="cityHasCorporations(city.id)==false" (click)="deleteCity(city); $event.stopPropagation()">&times;</span>
-                    </span>
-                </ng-template>
-                <a routerLink="/city-add/{{country.id}}" class="link-add">[&nbsp;dodaj&nbsp;miasto&nbsp;]</a>
-            </td>
-        </tr>
+            <tr *ngFor="let country of countries">
+                <td>
+                    <a routerLink="/country-edit/{{country.id}}">{{country.name}}</a>
+                    <span class="button-delete" title="usuń państwo: {{country.name}}" *ngIf="countryHasCities(country.id)===false" (click)="deleteCountry(country); $event.stopPropagation()">&times;</span>
+                </td>
+                <td>
+                    <ng-template ngFor let-city [ngForOf]="cities">
+                        <span class="city-link" *ngIf="city.country_id == country.id">
+                            <a routerLink="/city-edit/{{city.id}}">{{city.name}}</a>&nbsp;<span class="button-delete" title="usuń miasto: {{city.name}}" *ngIf="cityHasCorporations(city.id)==false" (click)="deleteCity(city); $event.stopPropagation()">&times;</span>
+                        </span>
+                    </ng-template>
+                    <a routerLink="/city-add/{{country.id}}" class="link-add">[&nbsp;dodaj&nbsp;miasto&nbsp;]</a>
+                </td>
+            </tr>
         </tbody>
     </table>
     <a routerLink="/country-add" class="link-add">[&nbsp;dodaj&nbsp;państwo&nbsp;]</a>
-
 </section>

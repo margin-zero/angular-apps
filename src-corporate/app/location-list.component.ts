@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 import { City } from './city';
-import { Country } from './country';
+import { Country }     from './country';
 import { Corporation } from './corporation';
 
-import { CityService } from './city.service';
-import { CountryService } from './country.service';
+import { CityService }        from './city.service';
+import { CountryService }     from './country.service';
 import { CorporationService } from './corporation.service';
 
 @Component({
@@ -50,7 +50,6 @@ export class LocationListComponent implements OnInit {
         return arr[i];
       }
     }
-    // will return undefined if not found; you could return a default instead
   }
 
   countryHasCities(country_id) {

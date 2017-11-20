@@ -1,11 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable }    from '@angular/core';
 import { Headers, Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
 import { Country } from './country';
-
-
 
 @Injectable()
 
@@ -18,11 +16,10 @@ export class CountryService {
 
     getCountries(): Promise<Country[]> {
 
-           return this.http.get(this.countriesUrl)
-           .toPromise()
-           .then(response => response.json() as Country[])
-           .catch(this.handleError);
-
+        return this.http.get(this.countriesUrl)
+          .toPromise()
+          .then(response => response.json() as Country[])
+          .catch(this.handleError);
     }
 
     getCountry(id: number): Promise<Country> {
@@ -63,5 +60,5 @@ export class CountryService {
           .toPromise()
           .then(() => country)
           .catch(this.handleError);
-      }
+    }
 }

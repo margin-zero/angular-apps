@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule }    from '@angular/http';
 import { FormsModule }   from '@angular/forms';
 
-// Imports for loading & configuring the in-memory web api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
 
@@ -22,7 +21,6 @@ import { LocationListComponent }      from './location-list.component';
 import { CorporationService }   from './corporation.service';
 import { CityService }          from './city.service';
 import { CountryService }       from './country.service';
-
 
 import { AppRoutingModule }     from './app-routing.module';
 

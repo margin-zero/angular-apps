@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Location }                 from '@angular/common';
+import { Router }            from '@angular/router';
+import { Location }          from '@angular/common';
 
 
 import { Country } from './country';
@@ -32,4 +32,3 @@ export class CountryAddComponent {
       this.location.back();
     }
 }
-

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable }    from '@angular/core';
 import { Headers, Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
@@ -58,5 +58,4 @@ export class CorporationService {
           .then(() => null)
           .catch(this.handleError);
     }
-
 }

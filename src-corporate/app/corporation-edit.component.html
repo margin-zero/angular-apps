@@ -1,6 +1,7 @@
 <div *ngIf="corporation" class="container">
     <div class="row justify-content-center">
         <div class="col-sm-8 col-md-6 col-lg-4 edit-form">
+
             <h5 class="edit-form-header">Edytuj korporację: {{corporation.name}}</h5>
     
             <div class="form-group">
@@ -16,18 +17,18 @@
             </div>
 
             <div class="form-group">
-                    <label for="inputCEO">CEO: </label>
-                    <input  [(ngModel)]="corporation.ceo_name" type="text" class="form-control" id="inputCEO" placeholder="CEO" tabindex="3" />
+                <label for="inputCEO">CEO: </label>
+                <input  [(ngModel)]="corporation.ceo_name" type="text" class="form-control" id="inputCEO" placeholder="CEO" tabindex="3" />
             </div>
 
             <div class="form-group">
-                    <label for="inputWWW">www: </label>
-                    <input  [(ngModel)]="corporation.website" type="text" class="form-control" id="inputWWW" placeholder="www" tabindex="4" />
+                <label for="inputWWW">www: </label>
+                <input  [(ngModel)]="corporation.website" type="text" class="form-control" id="inputWWW" placeholder="www" tabindex="4" />
             </div>
 
             <div class="form-group">
-                    <label for="inputEmail">e-mail: </label>
-                    <input  [(ngModel)]="corporation.email" type="text" class="form-control" id="inputEmail" placeholder="email kontaktowy" tabindex="5" />
+                <label for="inputEmail">e-mail: </label>
+                <input  [(ngModel)]="corporation.email" type="text" class="form-control" id="inputEmail" placeholder="email kontaktowy" tabindex="5" />
             </div>
 
             <div class="form-group clearfix">

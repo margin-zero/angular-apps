@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router }            from '@angular/router';
 
 import { Country } from './country';
-import { City } from './city';
+import { City }    from './city';
 
 import { CountryService } from './country.service';
-import { CityService } from './city.service';
+import { CityService }    from './city.service';
 
 
 @Component({

@@ -3,9 +3,9 @@ import { Component, OnInit }        from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Location }                 from '@angular/common';
 
-import { City }        from './city';
-import { CityService } from './city.service';
-import { Country } from './country';
+import { City }           from './city';
+import { CityService }    from './city.service';
+import { Country }        from './country';
 import { CountryService } from './country.service';
 
 @Component({

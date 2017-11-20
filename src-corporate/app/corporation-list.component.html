@@ -1,34 +1,31 @@
 <section class="container-fluid">
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>id</th>
-        <th>nazwa</th>
-        <th>miasto</th>
-        <th>państwo</th>
-        <th>CEO</th>
-        <th>website</th>
-        <th>email</th>
-        <th>&nbsp;</th>
-      </tr>
-    </thead>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>nazwa</th>
+                <th>miasto</th>
+                <th>państwo</th>
+                <th>CEO</th>
+                <th>website</th>
+                <th>email</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
 
-    <tbody>
-      <tr *ngFor="let corporation of corporations">
+        <tbody>
+            <tr *ngFor="let corporation of corporations">
 
-        <td (click)="onClick(corporation)">{{corporation.id}}</td>
-        <td (click)="onClick(corporation)">{{corporation.name}}</td>
-        <td (click)="onClick(corporation)">{{cities.find(getCity(corporation.city)).name}}</td>
-        <td (click)="onClick(corporation)">{{countries.find(getCountry(cities.find(getCity(corporation.city)).country_id)).name}}</td>
-        <td (click)="onClick(corporation)">{{corporation.ceo_name}}</td>
-        <td><a href="http://{{corporation.website}}">{{corporation.website}}</a></td>
-        <td><a href="mailto:{{corporation.email}}">{{corporation.email}}</a></td>
-
-        <td><button (click)="deleteCorporation(corporation)" class="btn btn-sm btn-danger float-right">Usuń</button></td>
-      </tr>
-    </tbody>
-  </table>
-  <a routerLink="/corporation-add" class="link-add">[ dodaj korporację ]</a>
+                <td (click)="onClick(corporation)">{{corporation.id}}</td>
+                <td (click)="onClick(corporation)">{{corporation.name}}</td>
+                <td (click)="onClick(corporation)">{{cities.find(getCity(corporation.city)).name}}</td>
+                <td (click)="onClick(corporation)">{{countries.find(getCountry(cities.find(getCity(corporation.city)).country_id)).name}}</td>
+                <td (click)="onClick(corporation)">{{corporation.ceo_name}}</td>
+                <td><a href="http://{{corporation.website}}">{{corporation.website}}</a></td>
+                <td><a href="mailto:{{corporation.email}}">{{corporation.email}}</a></td>
+                <td><button (click)="deleteCorporation(corporation)" class="btn btn-sm btn-danger float-right">Usuń</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <a routerLink="/corporation-add" class="link-add">[ dodaj korporację ]</a>
 </section>
-
-
