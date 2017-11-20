@@ -1,10 +1,10 @@
 <section class="container-fluid">
 
-        <div class="row">
-            <div class="col-sm-12">
+    <div class="row">
+        <div class="col-sm-12">
         
-                <div class="card text-red warning-card" id="warningCard">
-                    <div class="card-block">
+            <div class="card text-red warning-card" id="warningCard">
+                <div class="card-block">
                     <h4 class="card-title">UWAGA!</h4>
                     <p class="card-text text-danger">Dane wyświetlane w książce zostały wygenerowane losowo dla potrzeb demonstracji, na podstawie informacji statystycznych dot. imion w Polsce publikowanych
                         przez <a href="https://www.gov.pl/cyfryzacja/statystyki-imion">Ministerstwo Cyfryzacji</a> oraz informacji dot. nazwisk w Polsce
@@ -19,10 +19,10 @@
     </div>    
 
     <div class="row">
-            <div class="col-sm-12">
+        <div class="col-sm-12">
 
-                <input  [(ngModel)]="filter" (dblclick)="filter='';filterData()" (ngModelChange)="filterData()" type="text" class="form-control" id="inputFilter" placeholder="szukaj... (dwuklik usuwa wprowadzony filtr)" tabindex="1" />
-                <table class="table table-hover">
+            <input  [(ngModel)]="filter" (dblclick)="filter='';filterData()" (ngModelChange)="filterData()" type="text" class="form-control" id="inputFilter" placeholder="szukaj... (dwuklik usuwa wprowadzony filtr)" tabindex="1" />
+            <table class="table table-hover">
                 <thead>
                     <tr>
                     <th (click)="sortBy('name')" class="clickable">nazwisko</th>
@@ -50,16 +50,16 @@
                     </ng-template>
 
                 </tbody>
-                </table>
+            </table>
 
-            </div>
         </div>
+    </div>
 
 
-        <div class="row">
-            <div class="col-sm-12">
+    <div class="row">
+        <div class="col-sm-12">
 
-                <nav aria-label="strony">
+            <nav aria-label="strony">
                 <ul class="pagination justify-content-center">
 
                     <ng-template [ngIf]="page<2" [ngIfElse]="previousActive">
@@ -105,7 +105,7 @@
                     </ng-template>
 
                 </ul>
-                </nav>
+            </nav>
         </div>
     </div>
 </section>
