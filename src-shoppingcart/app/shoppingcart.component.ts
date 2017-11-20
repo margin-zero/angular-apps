@@ -1,14 +1,7 @@
-import { Component }                from '@angular/core';
-// import { Component, OnInit }                from '@angular/core';
-// import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { Location }                         from '@angular/common';
-
-// import { Product }          from './product';
-// import { ProductService }   from './product.service';
+import { Component } from '@angular/core';
+import { Location }  from '@angular/common';
 
 import { ShoppingcartService } from './shoppingcart.service';
-
-
 
 @Component({
     selector: 'shoppingcart',

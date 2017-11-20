@@ -23,15 +23,10 @@ export class ProductCatalogComponent implements OnInit {
         private location: Location
     ) {}
 
-
     ngOnInit(): void {
         this.productService
           .getProducts()                               // pobierz osoby z bazy danych...
           .then(products => this.setProducts(products)); // ...a potem wywołaj setPersons
-
-        // this.sub = this.route.params.subscribe((params) => {  // subskrybujemy parametry z routera
-        //   this.page = params['page'];
-        // });
     }
 
     setProducts(products): void {

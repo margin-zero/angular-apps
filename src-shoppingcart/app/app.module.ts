@@ -12,13 +12,8 @@ import { ProductCatalogComponent } from './product-catalog.component';
 import { ProductPreviewComponent } from './product-preview.component';
 import { ShoppingcartComponent } from './shoppingcart.component';
 
-
-// import { PhonebookComponent } from './phonebook.component';
-
 import { ProductService }      from './product.service';
 import { ShoppingcartService } from './shoppingcart.service';
-
-// import { PersonGenerator }    from './person-generator';
 
 import { AppRoutingModule }   from './app-routing.module';
 
@@ -28,7 +23,6 @@ import { AppRoutingModule }   from './app-routing.module';
     ProductCatalogComponent,
     ProductPreviewComponent,
     ShoppingcartComponent
-   // PhonebookComponent
   ],
   imports: [
     BrowserModule,

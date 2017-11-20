@@ -2,8 +2,8 @@ import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { ProductCatalogComponent }  from './product-catalog.component';
-import { ProductPreviewComponent } from './product-preview.component';
-import { ShoppingcartComponent } from './shoppingcart.component';
+import { ProductPreviewComponent }  from './product-preview.component';
+import { ShoppingcartComponent }    from './shoppingcart.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/catalog', pathMatch: 'full' },
